@@ -1,0 +1,51 @@
+.full-screen-panel {
+  width: 100%;
+  height: 100vh; /* Altura da viewport inteira */
+}
+
+.content {
+  text-align: center;
+}
+
+.login-container {
+  height: 100vh;
+  background: url("../../../assets/images/pexels-goumbik-669584.jpg") no-repeat
+    center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .login-form {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 350px;
+
+    .form-group {
+      margin-bottom: 1rem;
+
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+
+      input {
+        width: 100%;
+        padding: 0.75rem;
+        border-radius: 5px;
+      }
+    }
+
+    .button-group {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .p-message {
+      margin-top: 1rem;
+    }
+  }
+}
