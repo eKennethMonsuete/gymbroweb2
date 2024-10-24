@@ -8,6 +8,7 @@ import { AvatarModule } from 'primeng/avatar';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ButtonModule } from 'primeng/button';
 import { ToolbarModule } from 'primeng/toolbar';
+import { PanelModule } from 'primeng/panel';
 
 @NgModule({
   declarations: [DashboardComponent],
@@ -15,9 +16,7 @@ import { ToolbarModule } from 'primeng/toolbar';
     CommonModule,
     RouterModule.forChild(DASHBOARD_ROUTES),
     SharedModule,
-    AvatarModule,
-    ButtonModule,
-    ToolbarModule,
+    PanelModule,
   ],
 })
 export class DashboardModule {}

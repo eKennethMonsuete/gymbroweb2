@@ -15,6 +15,8 @@ import { LoginComponent } from './modules/login/login.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { SharedModule } from './shared/shared.module';
+
 @NgModule({
   declarations: [AppComponent, LoginComponent],
   imports: [
@@ -27,6 +29,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     InputTextModule,
     MessageModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
