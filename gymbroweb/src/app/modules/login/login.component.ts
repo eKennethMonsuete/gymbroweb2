@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthRequest } from 'src/app/shared/models/auth/AuthRequest';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,10 +10,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  email2: string = '123';
-  senha: string = '123';
   showErrorMessage: boolean = false;
-  constructor(private formBuilder: FormBuilder, private router: Router) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
   loginForm = this.formBuilder.group({
     email: ['', Validators.required],
@@ -20,17 +24,18 @@ export class LoginComponent {
 
   onSubmitLogin(): void {
     if (this.loginForm.value && this.loginForm.valid) {
-      if (
-        this.loginForm.value.email == this.email2 &&
-        this.loginForm.value.password == this.senha
-      ) {
-        console.log('login feito com sucess');
-        this.loginForm.reset();
-        this.router.navigate(['/dashboard']);
-      } else {
-        this.showErrorMessage = true;
-        console.log('invalido');
-      }
+      const values = this.loginForm.value;
+      const request: AuthRequest = {
+        email: values.email ?? '',
+        password: values.password ?? '',
+      };
+      this.authService.login(request).subscribe((resposta) => {
+        console.log(resposta);
+        if (resposta.accessToken) {
+          this.loginForm.reset();
+          this.router.navigate(['/dashboard']);
+        }
+      });
     }
   }
 }
