@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent],
@@ -33,7 +34,7 @@ import { HttpClientModule } from '@angular/common/http';
     MessageModule,
     SharedModule,
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

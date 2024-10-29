@@ -18,4 +18,9 @@ export class AuthService {
       .post<AuthResponse>(this.API_URL + '/api/user/login', request)
       .pipe(take(1));
   }
+
+  isLoggedIn(): boolean {
+    const JWT_TOKEN = sessionStorage.getItem('user-info');
+    return JWT_TOKEN ? true : false;
+  }
 }
