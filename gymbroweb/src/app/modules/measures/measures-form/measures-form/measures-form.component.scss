@@ -1,0 +1,13 @@
+@media (min-width: 768px) {
+  .card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .field {
+    flex: 1;
+    max-width: 48%; /* Dois campos lado a lado */
+    margin-bottom: 1rem;
+  }
+}

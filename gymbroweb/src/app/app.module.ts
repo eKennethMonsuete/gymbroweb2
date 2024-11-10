@@ -18,6 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MessageService } from 'primeng/api';
+import { MeasuresFormComponent } from './modules/measures/measures-form/measures-form/measures-form.component';
+import { MeasuresModule } from './modules/measures/measures.module';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent],
@@ -33,6 +35,7 @@ import { MessageService } from 'primeng/api';
     InputTextModule,
     MessageModule,
     SharedModule,
+    MeasuresModule,
   ],
   providers: [MessageService],
   bootstrap: [AppComponent],

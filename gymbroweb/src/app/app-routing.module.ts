@@ -14,7 +14,15 @@ const routes: Routes = [
       import('./modules/dashboard/dashboard.module').then(
         (m) => m.DashboardModule
       ),
-    canActivate: [AuthGuardService],
+    // canActivate: [AuthGuardService],
+  },
+  {
+    path: 'createmeasures',
+    loadChildren: () =>
+      import('./modules/measures/measures.module').then(
+        (m) => m.MeasuresModule
+      ),
+    // canActivate: [AuthGuardService],
   },
 ];
 

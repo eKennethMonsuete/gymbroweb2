@@ -1,0 +1,379 @@
+<p-panel>
+  <h2 class="text-2xl font-bold text-bluegray-700">Registrar Medidas</h2>
+  <form [formGroup]="addMeasureForm" (ngSubmit)="addMeasure()">
+    <div class="card flex flex-column md:flex-row gap-3">
+      <!-- Campo de Peso -->
+      <div class="field p-grid">
+        <label for="weight" class="p-col-12">Peso: </label>
+        <div class="p-col-12">
+          <input
+            type="number"
+            pInputText
+            placeholder="Peso"
+            formControlName="weight"
+            id="weight"
+            inputId="minmaxfraction"
+            mode="decimal"
+            [ngClass]="{
+              'p-invalid':
+                addMeasureForm.get('weight')!.invalid &&
+                addMeasureForm.get('weight')!.touched
+            }"
+          />
+          <small
+            class="p-error"
+            *ngIf="
+              addMeasureForm.get('weight')!.hasError('required') &&
+              addMeasureForm.get('weight')!.touched
+            "
+          >
+            O peso é obrigatório.
+          </small>
+          <small
+            class="p-error"
+            *ngIf="
+              addMeasureForm.get('weight')!.hasError('min') &&
+              addMeasureForm.get('weight')!.touched
+            "
+          >
+            O peso deve ser maior ou igual a 0.
+          </small>
+        </div>
+      </div>
+
+      <!-- Campo de Quadril -->
+      <div class="field p-grid">
+        <label for="hips" class="p-col-12">Quadril:</label>
+        <div class="p-col-12">
+          <input
+            type="number"
+            pInputText
+            placeholder="Quadril"
+            formControlName="hips"
+            id="hips"
+            mode="decimal"
+            [ngClass]="{
+              'p-invalid':
+                addMeasureForm.get('hips')!.invalid &&
+                addMeasureForm.get('hips')!.touched
+            }"
+          />
+          <small
+            class="p-error"
+            *ngIf="
+              addMeasureForm.get('hips')!.hasError('required') &&
+              addMeasureForm.get('hips')!.touched
+            "
+          >
+            O quadril é obrigatório.
+          </small>
+          <small
+            class="p-error"
+            *ngIf="
+              addMeasureForm.get('hips')!.hasError('min') &&
+              addMeasureForm.get('hips')!.touched
+            "
+          >
+            O quadril deve ser maior ou igual a 0.
+          </small>
+        </div>
+      </div>
+
+      <!-- Campo Left Biceps -->
+      <div class="field p-grid">
+        <label for="leftBiceps" class="p-col-12">Bíceps Esquerdo:</label>
+        <div class="p-col-12">
+          <input
+            type="number"
+            pInputText
+            placeholder="Bíceps Esquerdo"
+            formControlName="leftBiceps"
+            id="leftBiceps"
+            mode="decimal"
+            [ngClass]="{
+              'p-invalid':
+                addMeasureForm.get('leftBiceps')!.invalid &&
+                addMeasureForm.get('leftBiceps')!.touched
+            }"
+          />
+          <small
+            class="p-error"
+            *ngIf="
+              addMeasureForm.get('leftBiceps')!.hasError('required') &&
+              addMeasureForm.get('leftBiceps')!.touched
+            "
+          >
+            O bíceps esquerdo é obrigatório.
+          </small>
+          <small
+            class="p-error"
+            *ngIf="
+              addMeasureForm.get('leftBiceps')!.hasError('min') &&
+              addMeasureForm.get('leftBiceps')!.touched
+            "
+          >
+            O bíceps esquerdo deve ser maior ou igual a 0.
+          </small>
+        </div>
+      </div>
+
+      <!-- Campo Right Biceps -->
+      <div class="field p-grid">
+        <label for="rightBiceps" class="p-col-12">Bíceps Direito:</label>
+        <div class="p-col-12">
+          <input
+            type="number"
+            pInputText
+            placeholder="Bíceps Direito"
+            formControlName="rightBiceps"
+            id="rightBiceps"
+            mode="decimal"
+            [ngClass]="{
+              'p-invalid':
+                addMeasureForm.get('rightBiceps')!.invalid &&
+                addMeasureForm.get('rightBiceps')!.touched
+            }"
+          />
+          <small
+            class="p-error"
+            *ngIf="
+              addMeasureForm.get('rightBiceps')!.hasError('required') &&
+              addMeasureForm.get('rightBiceps')!.touched
+            "
+          >
+            O bíceps direito é obrigatório.
+          </small>
+          <small
+            class="p-error"
+            *ngIf="
+              addMeasureForm.get('rightBiceps')!.hasError('min') &&
+              addMeasureForm.get('rightBiceps')!.touched
+            "
+          >
+            O bíceps direito deve ser maior ou igual a 0.
+          </small>
+        </div>
+      </div>
+
+      <!-- Campo Left Quadriceps -->
+      <div class="field p-grid">
+        <label for="leftQuadriceps" class="p-col-12"
+          >Quadríceps Esquerdo:</label
+        >
+        <div class="p-col-12">
+          <input
+            type="number"
+            pInputText
+            placeholder="Quadríceps Esquerdo"
+            formControlName="leftQuadriceps"
+            id="leftQuadriceps"
+            mode="decimal"
+            [ngClass]="{
+              'p-invalid':
+                addMeasureForm.get('leftQuadriceps')!.invalid &&
+                addMeasureForm.get('leftQuadriceps')!.touched
+            }"
+          />
+          <small
+            class="p-error"
+            *ngIf="
+              addMeasureForm.get('leftQuadriceps')!.hasError('required') &&
+              addMeasureForm.get('leftQuadriceps')!.touched
+            "
+          >
+            O quadríceps esquerdo é obrigatório.
+          </small>
+          <small
+            class="p-error"
+            *ngIf="
+              addMeasureForm.get('leftQuadriceps')!.hasError('min') &&
+              addMeasureForm.get('leftQuadriceps')!.touched
+            "
+          >
+            O quadríceps esquerdo deve ser maior ou igual a 0.
+          </small>
+        </div>
+      </div>
+
+      <!-- Campo Right Quadriceps -->
+      <div class="field p-grid">
+        <label for="rightQuadriceps" class="p-col-12"
+          >Quadríceps Direito:</label
+        >
+        <div class="p-col-12">
+          <input
+            type="number"
+            pInputText
+            placeholder="Quadríceps Direito"
+            formControlName="rightQuadriceps"
+            id="rightQuadriceps"
+            mode="decimal"
+            [ngClass]="{
+              'p-invalid':
+                addMeasureForm.get('rightQuadriceps')!.invalid &&
+                addMeasureForm.get('rightQuadriceps')!.touched
+            }"
+          />
+          <small
+            class="p-error"
+            *ngIf="
+              addMeasureForm.get('rightQuadriceps')!.hasError('required') &&
+              addMeasureForm.get('rightQuadriceps')!.touched
+            "
+          >
+            O quadríceps direito é obrigatório.
+          </small>
+          <small
+            class="p-error"
+            *ngIf="
+              addMeasureForm.get('rightQuadriceps')!.hasError('min') &&
+              addMeasureForm.get('rightQuadriceps')!.touched
+            "
+          >
+            O quadríceps direito deve ser maior ou igual a 0.
+          </small>
+        </div>
+      </div>
+
+      <!-- Campo Left Calf -->
+      <div class="field p-grid">
+        <label for="leftCalf" class="p-col-12">Panturrilha Esquerda:</label>
+        <div class="p-col-12">
+          <input
+            type="number"
+            pInputText
+            placeholder="Panturrilha Esquerda"
+            formControlName="leftCalf"
+            id="leftCalf"
+            mode="decimal"
+            [ngClass]="{
+              'p-invalid':
+                addMeasureForm.get('leftCalf')!.invalid &&
+                addMeasureForm.get('leftCalf')!.touched
+            }"
+          />
+          <small
+            class="p-error"
+            *ngIf="
+              addMeasureForm.get('leftCalf')!.hasError('required') &&
+              addMeasureForm.get('leftCalf')!.touched
+            "
+          >
+            A panturrilha esquerda é obrigatória.
+          </small>
+          <small
+            class="p-error"
+            *ngIf="
+              addMeasureForm.get('leftCalf')!.hasError('min') &&
+              addMeasureForm.get('leftCalf')!.touched
+            "
+          >
+            A panturrilha esquerda deve ser maior ou igual a 0.
+          </small>
+        </div>
+      </div>
+
+      <!-- Campo Right Calf -->
+      <div class="field p-grid">
+        <label for="rightCalf" class="p-col-12">Panturrilha Direita:</label>
+        <div class="p-col-12">
+          <input
+            type="number"
+            pInputText
+            placeholder="Panturrilha Direita"
+            formControlName="rightCalf"
+            id="rightCalf"
+            mode="decimal"
+            [ngClass]="{
+              'p-invalid':
+                addMeasureForm.get('rightCalf')!.invalid &&
+                addMeasureForm.get('rightCalf')!.touched
+            }"
+          />
+          <small
+            class="p-error"
+            *ngIf="
+              addMeasureForm.get('rightCalf')!.hasError('required') &&
+              addMeasureForm.get('rightCalf')!.touched
+            "
+          >
+            A panturrilha direita é obrigatória.
+          </small>
+          <small
+            class="p-error"
+            *ngIf="
+              addMeasureForm.get('rightCalf')!.hasError('min') &&
+              addMeasureForm.get('rightCalf')!.touched
+            "
+          >
+            A panturrilha direita deve ser maior ou igual a 0.
+          </small>
+        </div>
+      </div>
+
+      <!-- Campo Student ID -->
+      <div class="field p-grid">
+        <label for="studentId" class="p-col-12">ID do Estudante:</label>
+        <div class="p-col-12">
+          <input
+            type="text"
+            pInputText
+            placeholder="ID do Estudante"
+            formControlName="studentId"
+            id="studentId"
+            [ngClass]="{
+              'p-invalid':
+                addMeasureForm.get('studentId')!.invalid &&
+                addMeasureForm.get('studentId')!.touched
+            }"
+          />
+          <small
+            class="p-error"
+            *ngIf="
+              addMeasureForm.get('studentId')!.hasError('required') &&
+              addMeasureForm.get('studentId')!.touched
+            "
+          >
+            O ID do estudante é obrigatório.
+          </small>
+        </div>
+      </div>
+
+      <!-- Campo de Data Anterior -->
+      <div class="field p-grid">
+        <label for="previousDate" class="p-col-12">Data Anterior</label>
+        <div class="p-col-12">
+          <input
+            type="date"
+            formControlName="previousDate"
+            id="previousDate"
+            pInputText
+            [ngClass]="{
+              'p-invalid':
+                addMeasureForm.get('previousDate')!.invalid &&
+                addMeasureForm.get('previousDate')!.touched
+            }"
+          />
+          <small
+            class="p-error"
+            *ngIf="
+              addMeasureForm.get('previousDate')!.hasError('required') &&
+              addMeasureForm.get('previousDate')!.touched
+            "
+          >
+            A data anterior é obrigatória.
+          </small>
+        </div>
+      </div>
+
+      <!-- Botão de Enviar -->
+      <div class="col-12 flex justify-content-center m-3">
+        <p-button
+          type="submit"
+          label="Registrar"
+          [disabled]="addMeasureForm.invalid"
+        ></p-button>
+      </div>
+    </div>
+  </form>
+</p-panel>
