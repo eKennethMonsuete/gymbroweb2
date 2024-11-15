@@ -1,0 +1,85 @@
+<p-panel>
+  <h2 class="text-2xl font-bold text-bluegray-700">Registrar Novo Personal</h2>
+  <form>
+    <div class="card flex flex-column gap-3">
+      <!-- Campos do formulário -->
+      <div class="field p-grid">
+        <label for="name" class="p-col-12">Nome: </label>
+        <div class="p-col-12">
+          <input
+            type="text"
+            pInputText
+            placeholder="Primeiro Nome"
+            id="name" 
+          />
+        </div>
+      </div>
+      
+      <div class="field p-grid">
+        <label for="email" class="p-col-12">Email: </label>
+        <div class="p-col-12">
+          <input
+            type="text"
+            pInputText
+            placeholder="email@dominio.com"
+            id="email" 
+          />
+        </div>
+      </div>
+
+      <div class="field p-grid">
+        <label for="lastname" class="p-col-12">Sobrenome: </label>
+        <div class="p-col-12">
+          <input
+            type="text"
+            pInputText
+            placeholder="Sobrenome"
+            id="lastname" 
+          />
+        </div>
+      </div>
+
+      <div class="field p-grid">
+        <label for="phone" class="p-col-12">WhatsApp/Telefone: </label>
+        <div class="p-col-12">
+          <input
+            type="text"
+            pInputText
+            placeholder="WhatsApp ou Telefone"
+            id="phone" 
+          />
+        </div>
+      </div>
+
+      <div class="field p-grid">
+        <label for="password" class="p-col-12">Senha: </label>
+        <div class="p-col-12">
+          <input
+            type="password"
+            pInputText
+            placeholder="Senha"
+            id="password" 
+          />
+        </div>
+      </div>
+
+      <div class="field p-grid">
+        <label for="passwordCheck" class="p-col-12">Confirme a Senha: </label>
+        <div class="p-col-12">
+          <input
+            type="password"
+            pInputText
+            placeholder="Confirme sua senha"
+            id="passwordCheck" 
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Botões em uma nova linha -->
+    <div class="flex justify-content-center gap-3 mt-4">
+      <p-button label="Info" severity="info"></p-button>
+      <p-button label="Danger" severity="danger"></p-button>
+    </div>
+  </form>
+</p-panel>

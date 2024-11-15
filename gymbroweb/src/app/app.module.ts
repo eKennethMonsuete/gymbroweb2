@@ -20,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MessageService } from 'primeng/api';
 import { MeasuresFormComponent } from './modules/measures/measures-form/measures-form/measures-form.component';
 import { MeasuresModule } from './modules/measures/measures.module';
+import { PersonalModule } from './modules/user/personal/personal.module';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent],
@@ -36,6 +37,7 @@ import { MeasuresModule } from './modules/measures/measures.module';
     MessageModule,
     SharedModule,
     MeasuresModule,
+    PersonalModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent],

@@ -5,7 +5,7 @@ import { AuthGuardService } from './guards/auth-guard.service';
 
 const routes: Routes = [
   {
-    path: 'login',
+    path: '',
     component: LoginComponent,
   },
   {
@@ -23,6 +23,14 @@ const routes: Routes = [
         (m) => m.MeasuresModule
       ),
     // canActivate: [AuthGuardService],
+  },
+  {
+    path: 'addpersonal',
+    loadChildren: () =>
+      import('./modules/user/personal/personal.module').then(
+        (p) => p.PersonalModule
+      )
+    
   },
 ];
 
