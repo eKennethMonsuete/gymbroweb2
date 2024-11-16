@@ -1,4 +1,8 @@
-import { NgModule } from '@angular/core';
+import {
+  CUSTOM_ELEMENTS_SCHEMA,
+  NgModule,
+  NO_ERRORS_SCHEMA,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PersonalFormComponent } from './personal-form/personal-form.component';
 import { PERSONAL_ROUTES } from './personal.routing';
@@ -8,7 +12,6 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
-
 
 @NgModule({
   imports: [
@@ -21,6 +24,7 @@ import { InputTextModule } from 'primeng/inputtext';
     ButtonModule,
     InputTextModule,
   ],
-  declarations: [PersonalFormComponent]
+  declarations: [PersonalFormComponent],
+  schemas: [],
 })
-export class PersonalModule { }
+export class PersonalModule {}

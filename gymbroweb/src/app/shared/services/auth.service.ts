@@ -15,7 +15,7 @@ export class AuthService {
 
   login(request: AuthRequest): Observable<AuthResponse> {
     return this.http
-      .post<AuthResponse>(this.API_URL + '/api/user/login', request)
+      .post<AuthResponse>(this.API_URL + '/user/login', request)
       .pipe(take(1));
   }
 

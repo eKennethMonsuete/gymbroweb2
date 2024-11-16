@@ -1,4 +1,4 @@
-export interface PersonalInput {
+export interface PersonalResponse {
   name: string;
   email: string;
   password: string;

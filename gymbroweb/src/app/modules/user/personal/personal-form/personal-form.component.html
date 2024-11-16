@@ -1,85 +1,231 @@
 <p-panel>
   <h2 class="text-2xl font-bold text-bluegray-700">Registrar Novo Personal</h2>
-  <form>
+  <form [formGroup]="AddPersonalForm" (ngSubmit)="addPersonal()">
     <div class="card flex flex-column gap-3">
-      <!-- Campos do formulário -->
+      <!-- Campo Nome -->
       <div class="field p-grid">
-        <label for="name" class="p-col-12">Nome: </label>
+        <label for="name" class="p-col-12">Nome:</label>
         <div class="p-col-12">
           <input
             type="text"
             pInputText
             placeholder="Primeiro Nome"
-            id="name" 
+            id="name"
+            formControlName="name"
+            [ngClass]="{
+              'p-invalid':
+                AddPersonalForm.get('name')!.invalid &&
+                AddPersonalForm.get('name')!.touched
+            }"
           />
-        </div>
-      </div>
-      
-      <div class="field p-grid">
-        <label for="email" class="p-col-12">Email: </label>
-        <div class="p-col-12">
-          <input
-            type="text"
-            pInputText
-            placeholder="email@dominio.com"
-            id="email" 
-          />
+          <small
+            class="p-error"
+            *ngIf="
+              AddPersonalForm.get('name')!.hasError('required') &&
+              AddPersonalForm.get('name')!.touched
+            "
+          >
+            O nome é obrigatório.
+          </small>
+          <small
+            class="p-error"
+            *ngIf="
+              AddPersonalForm.get('name')!.hasError('onlyLetters') &&
+              AddPersonalForm.get('name')!.touched
+            "
+          >
+            O nome deve conter apenas letras.
+          </small>
         </div>
       </div>
 
+      <!-- Campo Email -->
       <div class="field p-grid">
-        <label for="lastname" class="p-col-12">Sobrenome: </label>
+        <label for="email" class="p-col-12">Email:</label>
+        <div class="p-col-12">
+          <input
+            type="email"
+            pInputText
+            placeholder="email@dominio.com"
+            id="email"
+            formControlName="email"
+            [ngClass]="{
+              'p-invalid':
+                AddPersonalForm.get('email')!.invalid &&
+                AddPersonalForm.get('email')!.touched
+            }"
+          />
+          <!-- Mensagem para campo obrigatório -->
+          <small
+            class="p-error"
+            *ngIf="
+              AddPersonalForm.get('email')!.hasError('required') &&
+              AddPersonalForm.get('email')!.touched
+            "
+          >
+            O email é obrigatório.
+          </small>
+          <!-- Mensagem para email inválido -->
+          <small
+            class="p-error"
+            *ngIf="
+              AddPersonalForm.get('email')!.hasError('email') &&
+              AddPersonalForm.get('email')!.touched
+            "
+          >
+            O formato do email é inválido.
+          </small>
+        </div>
+      </div>
+
+      <!-- Campo Sobrenome -->
+      <div class="field p-grid">
+        <label for="lastName" class="p-col-12">Sobrenome:</label>
         <div class="p-col-12">
           <input
             type="text"
             pInputText
             placeholder="Sobrenome"
-            id="lastname" 
+            id="lastName"
+            formControlName="lastName"
+            [ngClass]="{
+              'p-invalid':
+                AddPersonalForm.get('lastName')!.invalid &&
+                AddPersonalForm.get('lastName')!.touched
+            }"
           />
+          <small
+            class="p-error"
+            *ngIf="
+              AddPersonalForm.get('lastName')!.hasError('required') &&
+              AddPersonalForm.get('lastName')!.touched
+            "
+          >
+            O sobrenome é obrigatório.
+          </small>
+          <small
+            class="p-error"
+            *ngIf="
+              AddPersonalForm.get('lastName')!.hasError('onlyLetters') &&
+              AddPersonalForm.get('lastName')!.touched
+            "
+          >
+            O sobrenome deve conter apenas letras.
+          </small>
         </div>
       </div>
 
+      <!-- Campo WhatsApp/Telefone -->
       <div class="field p-grid">
-        <label for="phone" class="p-col-12">WhatsApp/Telefone: </label>
+        <label for="phone" class="p-col-12">WhatsApp/Telefone:</label>
         <div class="p-col-12">
           <input
             type="text"
             pInputText
             placeholder="WhatsApp ou Telefone"
-            id="phone" 
+            id="phone"
+            formControlName="phone"
+            [ngClass]="{
+              'p-invalid':
+                AddPersonalForm.get('phone')!.invalid &&
+                AddPersonalForm.get('phone')!.touched
+            }"
           />
+          <small
+            class="p-error"
+            *ngIf="
+              AddPersonalForm.get('phone')!.hasError('required') &&
+              AddPersonalForm.get('phone')!.touched
+            "
+          >
+            O telefone é obrigatório.
+          </small>
+          <small
+            class="p-error"
+            *ngIf="AddPersonalForm.get('phone')!.hasError('maxlength')"
+          >
+            O telefone deve conter no max 15 caracteres.
+          </small>
+          <small
+            class="p-error"
+            *ngIf="AddPersonalForm.get('phone')!.hasError('onlyNumbers')"
+          >
+            O WhatsApp deve conter apenas números.
+          </small>
         </div>
       </div>
 
+      <!-- Campo Senha -->
       <div class="field p-grid">
-        <label for="password" class="p-col-12">Senha: </label>
+        <label for="password" class="p-col-12">Senha:</label>
         <div class="p-col-12">
           <input
             type="password"
             pInputText
             placeholder="Senha"
-            id="password" 
+            id="password"
+            formControlName="password"
+            [ngClass]="{
+              'p-invalid':
+                AddPersonalForm.get('password')!.invalid &&
+                AddPersonalForm.get('password')!.touched
+            }"
           />
+          <small
+            class="p-error"
+            *ngIf="
+              AddPersonalForm.get('password')!.hasError('required') &&
+              AddPersonalForm.get('password')!.touched
+            "
+          >
+            A senha é obrigatória.
+          </small>
         </div>
       </div>
 
+      <!-- Campo Confirme a Senha -->
       <div class="field p-grid">
-        <label for="passwordCheck" class="p-col-12">Confirme a Senha: </label>
+        <label for="passwordCheck" class="p-col-12">Confirme a Senha:</label>
         <div class="p-col-12">
           <input
             type="password"
             pInputText
             placeholder="Confirme sua senha"
-            id="passwordCheck" 
+            id="passwordCheck"
+            formControlName="passwordCheck"
+            [ngClass]="{
+              'p-invalid':
+                AddPersonalForm.get('passwordCheck')!.invalid &&
+                AddPersonalForm.get('passwordCheck')!.touched
+            }"
           />
+          <small
+            class="p-error"
+            *ngIf="
+              AddPersonalForm.get('passwordCheck')!.hasError('required') &&
+              AddPersonalForm.get('passwordCheck')!.touched
+            "
+          >
+            A confirmação de senha é obrigatória.
+          </small>
         </div>
       </div>
     </div>
 
-    <!-- Botões em uma nova linha -->
-    <div class="flex justify-content-center gap-3 mt-4">
-      <p-button label="Info" severity="info"></p-button>
-      <p-button label="Danger" severity="danger"></p-button>
+    <!-- Botões -->
+    <div class="flex justify-content-center gap-3 mt-4 button-group">
+      <p-button
+        label="Registrar-se como Personal"
+        severity="success"
+        type="submit"
+        [disabled]="!this.AddPersonalForm.valid"
+      ></p-button>
+      <p-button
+        severity="secondary"
+        label="Cancelar"
+        type="button"
+        (click)="cancelAndClearForm()"
+      ></p-button>
     </div>
   </form>
 </p-panel>
