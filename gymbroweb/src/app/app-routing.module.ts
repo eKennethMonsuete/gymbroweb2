@@ -1,3 +1,4 @@
+import { StudentModule } from './modules/user/student/student.module';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './modules/login/login.component';
@@ -29,8 +30,14 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/user/personal/personal.module').then(
         (p) => p.PersonalModule
-      )
-    
+      ),
+  },
+  {
+    path: 'addstudent',
+    loadChildren: () =>
+      import('./modules/user/student/student.module').then(
+        (p) => p.StudentModule
+      ),
   },
 ];
 
