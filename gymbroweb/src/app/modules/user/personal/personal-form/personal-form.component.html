@@ -216,12 +216,12 @@
     <div class="flex justify-content-center gap-3 mt-4 button-group">
       <p-button
         label="Registrar-se como Personal"
-        severity="success"
+        styleClass="p-button-raised p-button-text"
         type="submit"
         [disabled]="!this.AddPersonalForm.valid"
       ></p-button>
       <p-button
-        severity="secondary"
+        styleClass="p-button-raised p-button-text p-button-danger"
         label="Cancelar"
         type="button"
         (click)="cancelAndClearForm()"
