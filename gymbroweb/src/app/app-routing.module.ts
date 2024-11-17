@@ -39,6 +39,11 @@ const routes: Routes = [
         (p) => p.StudentModule
       ),
   },
+  {
+    path: 'addworkout',
+    loadChildren: () =>
+      import('./modules/workout/workout.module').then((p) => p.WorkoutModule),
+  },
 ];
 
 @NgModule({

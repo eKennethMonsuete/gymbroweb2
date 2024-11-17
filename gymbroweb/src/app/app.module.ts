@@ -21,6 +21,7 @@ import { MessageService } from 'primeng/api';
 
 import { MeasuresModule } from './modules/measures/measures.module';
 import { PersonalModule } from './modules/user/personal/personal.module';
+import { WorkoutFormComponent } from './modules/workout/workout-form/workout-form.component';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent],

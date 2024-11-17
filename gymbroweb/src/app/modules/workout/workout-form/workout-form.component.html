@@ -1,0 +1,143 @@
+<p-panel>
+  <h2 class="text-2xl font-bold text-bluegray-700">Registrar Novo Treino</h2>
+  <form [formGroup]="AddWorkoutForm" (ngSubmit)="addWorkout()">
+    <div class="card flex flex-column gap-3">
+      <!-- Campo Nome do Treino -->
+      <div class="field p-grid">
+        <label for="workoutName" class="p-col-12">Nome do Treino:</label>
+        <div class="p-col-12">
+          <input
+            type="text"
+            pInputText
+            placeholder="Nome do Treino"
+            id="workoutName"
+            formControlName="workoutName"
+            [ngClass]="{
+              'p-invalid':
+                AddWorkoutForm.get('workoutName')!.invalid &&
+                AddWorkoutForm.get('workoutName')!.touched
+            }"
+          />
+          <small
+            class="p-error"
+            *ngIf="
+              AddWorkoutForm.get('workoutName')!.hasError('required') &&
+              AddWorkoutForm.get('workoutName')!.touched
+            "
+          >
+            O nome do treino é obrigatório.
+          </small>
+        </div>
+      </div>
+
+      <!-- Campo Exercício -->
+      <div class="field p-grid">
+        <label for="exercise" class="p-col-12">Exercício:</label>
+        <div class="p-col-12">
+          <textarea
+            rows="3"
+            pInputTextarea
+            placeholder="Descrição do Treino"
+            id="exercise"
+            formControlName="exercise"
+            [ngClass]="{
+              'p-invalid':
+                AddWorkoutForm.get('exercise')!.invalid &&
+                AddWorkoutForm.get('exercise')!.touched
+            }"
+          ></textarea>
+          <small
+            class="p-error"
+            *ngIf="
+              AddWorkoutForm.get('exercise')!.hasError('required') &&
+              AddWorkoutForm.get('exercise')!.touched
+            "
+          >
+            O exercício é obrigatório.
+          </small>
+        </div>
+      </div>
+
+      <!-- Campo Descrição -->
+      <div class="field p-grid">
+        <label for="description" class="p-col-12">Descrição:</label>
+        <div class="p-col-12">
+          <textarea
+            rows="3"
+            pInputTextarea
+            placeholder="Descrição do Treino"
+            id="description"
+            formControlName="description"
+          ></textarea>
+        </div>
+      </div>
+
+      <!-- Campo Nota -->
+      <div class="field p-grid">
+        <label for="note" class="p-col-12">Nota:</label>
+        <div class="p-col-12">
+          <input
+            type="text"
+            pInputText
+            placeholder="Nota do Treino"
+            id="note"
+            formControlName="note"
+          />
+        </div>
+      </div>
+
+      <!-- Campo ID do Estudante -->
+      <div class="field p-grid">
+        <label for="studentId" class="p-col-12">ID do Estudante:</label>
+        <div class="p-col-12">
+          <input
+            type="text"
+            pInputText
+            placeholder="ID do Estudante"
+            id="studentId"
+            formControlName="studentId"
+            [ngClass]="{
+              'p-invalid':
+                AddWorkoutForm.get('studentId')!.invalid &&
+                AddWorkoutForm.get('studentId')!.touched
+            }"
+          />
+          <small
+            class="p-error"
+            *ngIf="
+              AddWorkoutForm.get('studentId')!.hasError('required') &&
+              AddWorkoutForm.get('studentId')!.touched
+            "
+          >
+            O ID do estudante é obrigatório.
+          </small>
+          <small
+            class="p-error"
+            *ngIf="
+              AddWorkoutForm.get('studentId')!.hasError('min') &&
+              AddWorkoutForm.get('studentId')!.touched
+            "
+          >
+            O ID do estudante deve ser maior que 0.
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botões -->
+    <div class="flex justify-content-center gap-3 mt-4 button-group">
+      <p-button
+        label="Cadastrar Treino"
+        styleClass="p-button-raised p-button-text"
+        type="submit"
+        [disabled]="!this.AddWorkoutForm.valid"
+      ></p-button>
+      <p-button
+        styleClass="p-button-raised p-button-text p-button-danger"
+        label="Cancelar"
+        type="button"
+        (click)="cancelAndClearForm()"
+      ></p-button>
+    </div>
+  </form>
+</p-panel>

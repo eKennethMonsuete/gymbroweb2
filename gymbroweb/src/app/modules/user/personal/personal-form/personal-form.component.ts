@@ -65,6 +65,7 @@ export class PersonalFormComponent implements OnInit, OnDestroy {
                 detail: 'Personal registrado com sucesso!',
                 life: 2500,
               });
+              this.router.navigate(['']);
             }
           },
           error: (err) => {
@@ -77,6 +78,8 @@ export class PersonalFormComponent implements OnInit, OnDestroy {
             });
           },
         });
+      this.AddPersonalForm.reset();
+      this.router.navigate(['']);
     }
   }
 

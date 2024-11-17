@@ -78,6 +78,8 @@ export class StudentFormComponent implements OnInit, OnDestroy {
             });
           },
         });
+      this.AddStudentForm.reset();
+      this.router.navigate(['dashboard']);
     }
   }
 
