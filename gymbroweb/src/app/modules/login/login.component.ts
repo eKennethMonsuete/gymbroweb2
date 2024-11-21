@@ -35,7 +35,19 @@ export class LoginComponent {
       this.authService.login(request).subscribe({
         next: (resposta) => {
           if (resposta.accessToken) {
-            sessionStorage.setItem('user-info', resposta.accessToken);
+            this.authService.saveToken(resposta.accessToken);
+
+            const tokenData = this.authService.decodeToken();
+            if (tokenData) {
+              console.log('SID:', tokenData.sid);
+              console.log('Role:', tokenData.role);
+              if (tokenData.role == 'STUDENT') {
+                localStorage.setItem('idStudent', tokenData.sid);
+              }
+              if (tokenData.role == 'PERSONAL') {
+                localStorage.setItem('idPersonal', tokenData.sid);
+              }
+            }
             this.loginForm.reset();
             this.router.navigate(['/dashboard']);
             this.showErrorMessage = false;

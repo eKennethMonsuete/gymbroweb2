@@ -4,6 +4,7 @@ import { environment } from 'src/enviroments/environment';
 import { StudentInput } from '../models/student/studentInput';
 import { Observable } from 'rxjs';
 import { StudentResponseSimple } from '../models/student/studentResponseSimple';
+import { StudentMeasuresResponse } from '../models/student/studentMeasuresResponse.';
 
 @Injectable({
   providedIn: 'root',
@@ -24,6 +25,11 @@ export class StudentService {
     return this.http.post<StudentResponseSimple>(
       `${this.API_URL}/student`,
       request
+    );
+  }
+  listStudentMeasures(id: string): Observable<StudentMeasuresResponse> {
+    return this.http.get<StudentMeasuresResponse>(
+      `${this.API_URL}/student/${id}`
     );
   }
 }
