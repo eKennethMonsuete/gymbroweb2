@@ -1,3 +1,20 @@
 <p-panel header="Dashboard" class="max-w-full max-w-screen">
   <p>This is your dashboard content</p>
+
+  <div class="grid">
+    <div class="col-12">
+      <!-- GRÁFICO DE PRODUTOS EM ESTOQUE -->
+      <p-card
+        header="Quantidade de produtos em estoque"
+        styleClass="shadow-3 m-5 text-indigo-800"
+      >
+        <p-chart
+          type="bar"
+          [data]="productsChartDatas"
+          [options]="productsChartOptions"
+          style="width: 100%; height: 400px"
+        ></p-chart>
+      </p-card>
+    </div>
+  </div>
 </p-panel>
