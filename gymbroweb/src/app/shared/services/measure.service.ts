@@ -4,6 +4,7 @@ import { environment } from 'src/enviroments/environment';
 import { MeasuresInput } from '../models/measures/measuresInput';
 import { Observable } from 'rxjs';
 import { MeasuresResponse } from '../models/measures/measuresResponse';
+import { MeasuresUpdate } from '../models/measures/measuresUpdate';
 
 @Injectable({
   providedIn: 'root',
@@ -25,5 +26,14 @@ export class MeasureService {
       `${this.API_URL}/measures`,
       requestData
     );
+  }
+
+  updateMeasures(id : string, measures: MeasuresUpdate): Observable<MeasuresResponse>{
+      return this.http.put<MeasuresResponse>(`${this.API_URL}/measures/${id}`, measures)
+  }
+
+  findById(id: number){
+    return this.http.get<any>(`${this.API_URL}/measures/${id}`)
+
   }
 }

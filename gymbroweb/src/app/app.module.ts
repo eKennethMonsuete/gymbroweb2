@@ -22,6 +22,7 @@ import { MessageService } from 'primeng/api';
 import { MeasuresModule } from './modules/measures/measures.module';
 import { PersonalModule } from './modules/user/personal/personal.module';
 import { WorkoutFormComponent } from './modules/workout/workout-form/workout-form.component';
+import { WorkoutModule } from './modules/workout/workout.module';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent],
@@ -39,6 +40,7 @@ import { WorkoutFormComponent } from './modules/workout/workout-form/workout-for
     SharedModule,
     MeasuresModule,
     PersonalModule,
+    WorkoutModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent],

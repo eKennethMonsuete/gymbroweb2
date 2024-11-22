@@ -9,9 +9,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { MeasuresEditComponent } from './measures-edit/measures-edit/measures-edit.component';
 import { InputTextModule } from 'primeng/inputtext';
+import { ListMeasuresComponent } from './list-measures/list-measures.component';
 
 @NgModule({
-  declarations: [MeasuresFormComponent, MeasuresEditComponent],
+  declarations: [MeasuresFormComponent, MeasuresEditComponent, ListMeasuresComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(MEASURES_ROUTES),

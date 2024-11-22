@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WorkoutFormComponent } from './workout-form/workout-form.component';
 import { WORKOUT_ROUTES } from './workout.routing';
@@ -8,6 +8,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
+import { ListWorkoutComponent } from './list-workout/list-workout.component';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { InputTextModule } from 'primeng/inputtext';
     ButtonModule,
     InputTextModule,
   ],
-  declarations: [WorkoutFormComponent],
+  declarations: [WorkoutFormComponent, ListWorkoutComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class WorkoutModule {}

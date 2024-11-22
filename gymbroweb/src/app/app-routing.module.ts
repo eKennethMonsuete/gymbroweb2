@@ -26,6 +26,14 @@ const routes: Routes = [
     // canActivate: [AuthGuardService],
   },
   {
+    path: 'mymeasures',
+    loadChildren: () =>
+      import('./modules/measures/measures.module').then(
+        (m) => m.MeasuresModule
+      ),
+    // canActivate: [AuthGuardService],
+  },
+  {
     path: 'addpersonal',
     loadChildren: () =>
       import('./modules/user/personal/personal.module').then(
@@ -41,6 +49,11 @@ const routes: Routes = [
   },
   {
     path: 'addworkout',
+    loadChildren: () =>
+      import('./modules/workout/workout.module').then((p) => p.WorkoutModule),
+  },
+  {
+    path: 'myworkout',
     loadChildren: () =>
       import('./modules/workout/workout.module').then((p) => p.WorkoutModule),
   },
