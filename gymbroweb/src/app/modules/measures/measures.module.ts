@@ -10,9 +10,15 @@ import { ButtonModule } from 'primeng/button';
 import { MeasuresEditComponent } from './measures-edit/measures-edit/measures-edit.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { ListMeasuresComponent } from './list-measures/list-measures.component';
+import { CardModule } from 'primeng/card';
+import { SharedModule } from 'primeng/api';
 
 @NgModule({
-  declarations: [MeasuresFormComponent, MeasuresEditComponent, ListMeasuresComponent],
+  declarations: [
+    MeasuresFormComponent,
+    MeasuresEditComponent,
+    ListMeasuresComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(MEASURES_ROUTES),
@@ -22,6 +28,8 @@ import { ListMeasuresComponent } from './list-measures/list-measures.component';
     ReactiveFormsModule,
     ButtonModule,
     InputTextModule,
+    CardModule,
+    SharedModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

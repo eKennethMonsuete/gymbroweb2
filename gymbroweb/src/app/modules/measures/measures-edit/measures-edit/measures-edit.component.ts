@@ -7,53 +7,69 @@ import { MeasureService } from 'src/app/shared/services/measure.service';
 @Component({
   selector: 'app-measures-edit',
   templateUrl: './measures-edit.component.html',
-  styleUrls: ['./measures-edit.component.scss']
+  styleUrls: ['./measures-edit.component.scss'],
 })
 export class MeasuresEditComponent implements OnDestroy, OnInit {
   measureId: number = 0;
   formMeasuresUpdate!: FormGroup;
 
-constructor(private measureService : MeasureService,
-  private route: ActivatedRoute,
-  private formBuilder: FormBuilder
-) {
-  
-  this.formMeasuresUpdate = this.formBuilder.group({
-  weight: ['', [Validators.required, Validators.min(0)]],
-  leftBiceps: ['', [Validators.required, Validators.min(0)]],
-  rightBiceps: ['', [Validators.required, Validators.min(0)]],
-  waist: ['', [Validators.required, Validators.min(0)]],
-  leftQuadriceps: ['', [Validators.required, Validators.min(0)]],
-  rightQuadriceps: ['', [Validators.required, Validators.min(0)]],
-  leftCalf: ['', [Validators.required, Validators.min(0)]],
-  rightCalf: ['', [Validators.required, Validators.min(0)]],
-  studentId: ['', [Validators.required, Validators.min(0)]],
-  previousDate: ['']
-});
-
-}
-
+  constructor(
+    private measureService: MeasureService,
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder
+  ) {
+    this.formMeasuresUpdate = this.formBuilder.group({
+      weight: ['', [Validators.required, Validators.min(0)]],
+      leftBiceps: ['', [Validators.required, Validators.min(0)]],
+      rightBiceps: ['', [Validators.required, Validators.min(0)]],
+      hips: ['', [Validators.required, Validators.min(0)]],
+      leftQuadriceps: ['', [Validators.required, Validators.min(0)]],
+      rightQuadriceps: ['', [Validators.required, Validators.min(0)]],
+      leftCalf: ['', [Validators.required, Validators.min(0)]],
+      rightCalf: ['', [Validators.required, Validators.min(0)]],
+      studentId: ['', [Validators.required, Validators.min(0)]],
+      previousDate: [''],
+    });
+  }
 
   ngOnInit(): void {
-    this.getMeasureId()
+    this.getMeasureId();
   }
   ngOnDestroy(): void {
     throw new Error('Method not implemented.');
   }
 
-  getMeasureId(){
+  getMeasureId() {
     const id = this.route.snapshot.paramMap.get('id');
     this.measureId = id !== null ? +id : 0;
 
     if (this.measureId) {
-      this.measureService.findById(this.measureId).subscribe((measure: MeasuresUpdate) => {
-        if (measure) {
-          this.formMeasuresUpdate.patchValue(measure);
-        }
-      });
+      this.measureService
+        .findById(this.measureId)
+        .subscribe((measure: MeasuresUpdate) => {
+          if (measure) {
+            this.formMeasuresUpdate.patchValue(measure);
+          }
+        });
     }
-    console.log(this.measureId)
-
+    console.log(this.measureId);
   }
-
+  updateMyMeasures() {
+    if (this.formMeasuresUpdate.valid) {
+      const updatedMeasures: MeasuresUpdate = {
+        ...this.formMeasuresUpdate.value,
+        id: this.measureId,
+      };
+      this.measureService
+        .updateMeasures(this.measureId, updatedMeasures)
+        .subscribe(
+          (response) => {
+            console.log('deu certo');
+          },
+          (error) => {
+            console.error('deu erro', error);
+          }
+        );
+    }
+  }
 }

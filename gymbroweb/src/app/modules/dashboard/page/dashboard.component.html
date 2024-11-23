@@ -1,6 +1,6 @@
 <p-panel header="Dashboard" class="max-w-full max-w-screen">
   <p>This is your dashboard content</p>
-
+  <!-- GRÁFICO DE medidas  aluno -->
   <div class="grid">
     <div class="col-12">
       <!-- GRÁFICO DE PRODUTOS EM ESTOQUE -->
@@ -17,36 +17,64 @@
       </p-card> -->
     </div>
   </div>
-</p-panel>
+  <!-- table do professor -->
+  <div class="grid">
+    <div class="col-12">
+      <div class="card">
+        <p-table
+          [value]="myStudents"
+          styleClass="p-datatable-striped"
+          [tableStyle]="{ 'min-width': '50rem' }"
+        >
+          <!-- Cabeçalho -->
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Id</th>
+              <th>Nome</th>
+              <th>Sobrenome</th>
+              <th>Email</th>
+              <th>Telefone</th>
+              <th>Data de Criação</th>
+              <th></th>
+            </tr>
+          </ng-template>
 
-<div class="card flex justify-content-center">
-  <p-card
-    header="Advanced Card"
-    subheader="Card Subheader"
-    [style]="{ width: '360px' }"
-  >
-    <ng-template pTemplate="header">
-      <img
-        alt="Card"
-        src="https://primefaces.org/cdn/primeng/images/card-ng.jpg"
-      />
-    </ng-template>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed
-      consequuntur error repudiandae numquam deserunt quisquam repellat libero
-      asperiores earum nam nobis, culpa ratione quam perferendis esse,
-      cupiditate neque quas!
-    </p>
-    <ng-template pTemplate="footer">
-      <div class="flex gap-3 mt-1">
-        <p-button
-          label="Cancel"
-          severity="secondary"
-          class="w-full"
-          styleClass="w-full"
-        />
-        <p-button label="Save" class="w-full" styleClass="w-full" />
+          <!-- Corpo -->
+          <ng-template pTemplate="body" let-student>
+            <tr>
+              <td>{{ student.id }}</td>
+              <td>{{ student.name }}</td>
+              <td>{{ student.lastName }}</td>
+              <td>{{ student.email }}</td>
+              <td>{{ student.phone }}</td>
+              <td>{{ student.createdAt }}</td>
+              <td>
+                <div
+                  class="flex align-items-center justify-content-center gap-2"
+                >
+                  <!-- Botão de edição -->
+                  <button
+                    pButton
+                    pRipple
+                    type="button"
+                    icon="pi pi-pencil"
+                    class="p-button-rounded p-button-text"
+                  ></button>
+
+                  <!-- Botão de exclusão -->
+                  <button
+                    pButton
+                    pRipple
+                    type="button"
+                    icon="pi pi-trash"
+                    class="p-button-rounded p-button-text"
+                  ></button>
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
       </div>
-    </ng-template>
-  </p-card>
-</div>
+    </div>
+  </div>
+</p-panel>

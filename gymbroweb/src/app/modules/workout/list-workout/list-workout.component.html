@@ -1,24 +1,31 @@
-<div
-  class="flex flex-wrap justify-content-center gap-3"
-  *ngFor="let workout of myMeasuresAndWorkouts"
->
-  <p-card
-    header="{{ workout.workoutName }}"
-    subheader="{{ workout.note }}"
-    class="p-card w-full md:w-8 lg:w-3"
+<div class="flex flex-wrap justify-center gap-4 w-full">
+  <div
+    *ngFor="let workout of myMeasuresAndWorkouts"
+    class="w-full sm:w-6 md:w-4 lg:w-2 xl:w-1/5 flex"
   >
-    <ng-template pTemplate="header">
-      <img alt="Card" src="../../../../assets/images/pesos.jpg" />
-    </ng-template>
+    <p-card
+      header="{{ workout.workoutName }}"
+      subheader="{{ workout.note }}"
+      class="p-card h-full"
+    >
+      <ng-template pTemplate="header">
+        <img alt="Card" src="../../../../assets/images/pesos.jpg" />
+      </ng-template>
 
-    <p>Exercício: {{ workout.exercise }}</p>
-    <p>Descrição: {{ workout.description }}</p>
+      <p>Exercício: {{ workout.exercise }}</p>
+      <p>Criado em: {{ workout.createdAt }}</p>
+      <p>Descrição: {{ workout.description }}</p>
 
-    <ng-template pTemplate="footer">
-      <div class="flex gap-3 mt-1">
-        <p-button label="Cancel" severity="secondary" class="w-full"></p-button>
-        <p-button label="Save" class="w-full"></p-button>
-      </div>
-    </ng-template>
-  </p-card>
+      <ng-template pTemplate="footer">
+        <div class="flex gap-3 mt-1">
+          <p-button
+            label="Editar"
+            severity="secondary"
+            class="w-full"
+          ></p-button>
+          <p-button label="Excluir" class="w-full"></p-button>
+        </div>
+      </ng-template>
+    </p-card>
+  </div>
 </div>

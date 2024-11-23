@@ -26,6 +26,14 @@ const routes: Routes = [
     // canActivate: [AuthGuardService],
   },
   {
+    path: 'measures',
+    loadChildren: () =>
+      import('./modules/measures/measures.module').then(
+        (m) => m.MeasuresModule
+      ),
+    // canActivate: [AuthGuardService],
+  },
+  {
     path: 'mymeasures',
     loadChildren: () =>
       import('./modules/measures/measures.module').then(

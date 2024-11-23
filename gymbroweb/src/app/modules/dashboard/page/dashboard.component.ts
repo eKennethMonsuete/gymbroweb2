@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MeasuresResponse } from 'src/app/shared/models/measures/measuresResponse';
 import { StudentMeasuresResponse } from 'src/app/shared/models/student/studentMeasuresResponse.';
+import { StudentResponseSimple } from 'src/app/shared/models/student/studentResponseSimple';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { PersonalService } from 'src/app/shared/services/personal.service';
 import { StudentService } from 'src/app/shared/services/student.service';
 //import { ChartData, ChartOptions } from 'chart.js';
 
@@ -16,13 +18,15 @@ export class DashboardComponent implements OnInit {
 
   //public myMeasures: Array<StudentMeasuresResponse> = [];
   myMeasures: MeasuresResponse[] = [];
+  myStudents: StudentResponseSimple[] = [];
 
   // public productsChartDatas!: ChartData;
   // public productsChartOptions!: ChartOptions;
 
   constructor(
     private authService: AuthService,
-    private studentService: StudentService
+    private studentService: StudentService,
+    private personalService: PersonalService
   ) {}
 
   ngOnInit(): void {
@@ -33,6 +37,7 @@ export class DashboardComponent implements OnInit {
     }
     console.log(this.sid, this.role);
     this.getMyMeasures();
+    this.getStudentsForPersonal();
     //this.setProductsChartConfig();
   }
 
@@ -41,12 +46,28 @@ export class DashboardComponent implements OnInit {
       this.studentService
         .listStudentMeasures(this.sid)
         .subscribe((resposta) => {
-          if (resposta && resposta.Measures) {
-            this.myMeasures = resposta.Measures; // Extrai apenas os treinos
+          if (resposta && resposta.measures) {
+            this.myMeasures = resposta.measures; // Extrai apenas os treinos
           } else {
             this.myMeasures = []; // Garante que a lista seja inicializada
           }
           console.log(this.myMeasures);
+        });
+    }
+  }
+
+  getStudentsForPersonal(): void {
+    if (this.sid !== null && this.role == 'PERSONAL') {
+      this.personalService
+        .listPersonalStudents(this.sid)
+        .subscribe((resposta) => {
+          if (resposta && resposta.students) {
+            this.myStudents = resposta.students;
+          } else {
+            console.log('algo deu errado');
+            this.myStudents = [];
+          }
+          console.log('Meus alunos', this.myStudents);
         });
     }
   }

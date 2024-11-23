@@ -25,7 +25,7 @@ import { CardModule } from 'primeng/card';
     InputTextModule,
     SharedModule,
     CardModule,
-    //BrowserAnimationsModule,
+    
   ],
   declarations: [WorkoutFormComponent, ListWorkoutComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

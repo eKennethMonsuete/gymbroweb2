@@ -11,6 +11,7 @@ import { ButtonModule } from 'primeng/button';
 import { ToolbarModule } from 'primeng/toolbar';
 import { PanelModule } from 'primeng/panel';
 import { CardModule } from 'primeng/card';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [DashboardComponent],
@@ -22,6 +23,7 @@ import { CardModule } from 'primeng/card';
     ChartModule,
     CardModule,
     ButtonModule,
+    TableModule,
   ],
 })
 export class DashboardModule {}

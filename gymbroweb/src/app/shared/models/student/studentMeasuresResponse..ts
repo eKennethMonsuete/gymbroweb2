@@ -9,7 +9,7 @@ export interface StudentMeasuresResponse {
   phone: string;
   personalId: number;
   createdAt: string;
-  Measures: MeasuresResponse[];
+  measures: MeasuresResponse[];
 
   workouts: WorkoutResponse[];
 }

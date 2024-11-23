@@ -1,1 +1,270 @@
-<p>measures-edit works!</p>
+<p-panel>
+  <h2 class="text-2xl font-bold text-bluegray-700">Atualizar Medidas</h2>
+  <form [formGroup]="formMeasuresUpdate" (ngSubmit)="updateMyMeasures()">
+    <div class="card flex flex-column gap-3">
+      <!-- Campo de Peso -->
+      <div class="field p-grid">
+        <label for="weight" class="p-col-12">Peso:</label>
+        <div class="p-col-12">
+          <input
+            type="number"
+            pInputText
+            placeholder="Peso"
+            formControlName="weight"
+            id="weight"
+            [ngClass]="{
+              'p-invalid':
+                formMeasuresUpdate.get('weight')!.invalid &&
+                formMeasuresUpdate.get('weight')!.touched
+            }"
+          />
+          <small
+            class="p-error"
+            *ngIf="
+              formMeasuresUpdate.get('weight')!.hasError('required') &&
+              formMeasuresUpdate.get('weight')!.touched
+            "
+          >
+            O peso é obrigatório.
+          </small>
+        </div>
+      </div>
+
+      <!-- Campo de Cintura -->
+      <div class="field p-grid">
+        <label for="waist" class="p-col-12">Cintura:</label>
+        <div class="p-col-12">
+          <input
+            type="number"
+            pInputText
+            placeholder="Cintura"
+            formControlName="hips"
+            id="waist"
+            [ngClass]="{
+              'p-invalid':
+                formMeasuresUpdate.get('hips')!.invalid &&
+                formMeasuresUpdate.get('hips')!.touched
+            }"
+          />
+          <small
+            class="p-error"
+            *ngIf="
+              formMeasuresUpdate.get('hips')!.hasError('required') &&
+              formMeasuresUpdate.get('hips')!.touched
+            "
+          >
+            A cintura é obrigatória.
+          </small>
+        </div>
+      </div>
+
+      <!-- Campo de Bíceps Esquerdo -->
+      <div class="field p-grid">
+        <label for="leftBiceps" class="p-col-12">Bíceps Esquerdo:</label>
+        <div class="p-col-12">
+          <input
+            type="number"
+            pInputText
+            placeholder="Bíceps Esquerdo"
+            formControlName="leftBiceps"
+            id="leftBiceps"
+            [ngClass]="{
+              'p-invalid':
+                formMeasuresUpdate.get('leftBiceps')!.invalid &&
+                formMeasuresUpdate.get('leftBiceps')!.touched
+            }"
+          />
+          <small
+            class="p-error"
+            *ngIf="
+              formMeasuresUpdate.get('leftBiceps')!.hasError('required') &&
+              formMeasuresUpdate.get('leftBiceps')!.touched
+            "
+          >
+            O bíceps esquerdo é obrigatório.
+          </small>
+        </div>
+      </div>
+
+      <!-- Campo de Bíceps Direito -->
+      <div class="field p-grid">
+        <label for="rightBiceps" class="p-col-12">Bíceps Direito:</label>
+        <div class="p-col-12">
+          <input
+            type="number"
+            pInputText
+            placeholder="Bíceps Direito"
+            formControlName="rightBiceps"
+            id="rightBiceps"
+            [ngClass]="{
+              'p-invalid':
+                formMeasuresUpdate.get('rightBiceps')!.invalid &&
+                formMeasuresUpdate.get('rightBiceps')!.touched
+            }"
+          />
+          <small
+            class="p-error"
+            *ngIf="
+              formMeasuresUpdate.get('rightBiceps')!.hasError('required') &&
+              formMeasuresUpdate.get('rightBiceps')!.touched
+            "
+          >
+            O bíceps direito é obrigatório.
+          </small>
+        </div>
+      </div>
+
+      <!-- Campo de Quadríceps Esquerdo -->
+      <div class="field p-grid">
+        <label for="leftQuadriceps" class="p-col-12"
+          >Quadríceps Esquerdo:</label
+        >
+        <div class="p-col-12">
+          <input
+            type="number"
+            pInputText
+            placeholder="Quadríceps Esquerdo"
+            formControlName="leftQuadriceps"
+            id="leftQuadriceps"
+            [ngClass]="{
+              'p-invalid':
+                formMeasuresUpdate.get('leftQuadriceps')!.invalid &&
+                formMeasuresUpdate.get('leftQuadriceps')!.touched
+            }"
+          />
+          <small
+            class="p-error"
+            *ngIf="
+              formMeasuresUpdate.get('leftQuadriceps')!.hasError('required') &&
+              formMeasuresUpdate.get('leftQuadriceps')!.touched
+            "
+          >
+            O quadríceps esquerdo é obrigatório.
+          </small>
+        </div>
+      </div>
+
+      <!-- Campo de Quadríceps Direito -->
+      <div class="field p-grid">
+        <label for="rightQuadriceps" class="p-col-12"
+          >Quadríceps Direito:</label
+        >
+        <div class="p-col-12">
+          <input
+            type="number"
+            pInputText
+            placeholder="Quadríceps Direito"
+            formControlName="rightQuadriceps"
+            id="rightQuadriceps"
+            [ngClass]="{
+              'p-invalid':
+                formMeasuresUpdate.get('rightQuadriceps')!.invalid &&
+                formMeasuresUpdate.get('rightQuadriceps')!.touched
+            }"
+          />
+          <small
+            class="p-error"
+            *ngIf="
+              formMeasuresUpdate.get('rightQuadriceps')!.hasError('required') &&
+              formMeasuresUpdate.get('rightQuadriceps')!.touched
+            "
+          >
+            O quadríceps direito é obrigatório.
+          </small>
+        </div>
+      </div>
+
+      <!-- Campo de Panturrilha Esquerda -->
+      <div class="field p-grid">
+        <label for="leftCalf" class="p-col-12">Panturrilha Esquerda:</label>
+        <div class="p-col-12">
+          <input
+            type="number"
+            pInputText
+            placeholder="Panturrilha Esquerda"
+            formControlName="leftCalf"
+            id="leftCalf"
+            [ngClass]="{
+              'p-invalid':
+                formMeasuresUpdate.get('leftCalf')!.invalid &&
+                formMeasuresUpdate.get('leftCalf')!.touched
+            }"
+          />
+          <small
+            class="p-error"
+            *ngIf="
+              formMeasuresUpdate.get('leftCalf')!.hasError('required') &&
+              formMeasuresUpdate.get('leftCalf')!.touched
+            "
+          >
+            A panturrilha esquerda é obrigatória.
+          </small>
+        </div>
+      </div>
+
+      <!-- Campo de Panturrilha Direita -->
+      <div class="field p-grid">
+        <label for="rightCalf" class="p-col-12">Panturrilha Direita:</label>
+        <div class="p-col-12">
+          <input
+            type="number"
+            pInputText
+            placeholder="Panturrilha Direita"
+            formControlName="rightCalf"
+            id="rightCalf"
+            [ngClass]="{
+              'p-invalid':
+                formMeasuresUpdate.get('rightCalf')!.invalid &&
+                formMeasuresUpdate.get('rightCalf')!.touched
+            }"
+          />
+          <small
+            class="p-error"
+            *ngIf="
+              formMeasuresUpdate.get('rightCalf')!.hasError('required') &&
+              formMeasuresUpdate.get('rightCalf')!.touched
+            "
+          >
+            A panturrilha direita é obrigatória.
+          </small>
+        </div>
+      </div>
+
+      <!-- Campo de Data Anterior
+      <div class="field p-grid">
+        <label for="previousDate" class="p-col-12">Data Anterior:</label>
+        <div class="p-col-12">
+          <input
+            type="date"
+            pInputText
+            formControlName="previousDate"
+            id="previousDate"
+            [ngClass]="{
+              'p-invalid':
+                formMeasuresUpdate.get('previousDate')!.invalid &&
+                formMeasuresUpdate.get('previousDate')!.touched
+            }"
+          />
+          <small
+            class="p-error"
+            *ngIf="
+              formMeasuresUpdate.get('previousDate')!.hasError('required') &&
+              formMeasuresUpdate.get('previousDate')!.touched
+            "
+          >
+            A data anterior é obrigatória.
+          </small>
+        </div>
+      </div> -->
+
+      <!-- Botão de Atualizar -->
+      <div class="col-12 flex justify-content-center m-3">
+        <p-button
+          type="submit"
+          label="Atualizar"
+          [disabled]="formMeasuresUpdate.invalid"
+        ></p-button>
+      </div>
+    </div>
+  </form>
+</p-panel>

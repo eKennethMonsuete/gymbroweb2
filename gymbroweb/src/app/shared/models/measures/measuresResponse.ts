@@ -1,12 +1,12 @@
 export interface MeasuresResponse {
-  Weight: number;
-  Hips: number;
-  LeftBiceps: number;
-  RightBiceps: number;
-  LeftQuadriceps: number;
-  RightQuadriceps: number;
-  LeftCalf: number;
-  RightCalf: number;
-  PreviousDate: string;
-  // CreatedAt: Date;
+  weight: number;
+  hips: number;
+  leftBiceps: number;
+  rightBiceps: number;
+  leftQuadriceps: number;
+  rightQuadriceps: number;
+  leftCalf: number;
+  rightCalf: number;
+  previousDate: string;
+  createdAt: string;
 }

@@ -28,12 +28,17 @@ export class MeasureService {
     );
   }
 
-  updateMeasures(id : string, measures: MeasuresUpdate): Observable<MeasuresResponse>{
-      return this.http.put<MeasuresResponse>(`${this.API_URL}/measures/${id}`, measures)
+  updateMeasures(
+    id: number,
+    measures: MeasuresUpdate
+  ): Observable<MeasuresResponse> {
+    return this.http.put<MeasuresResponse>(
+      `${this.API_URL}/measures/${id}`,
+      measures
+    );
   }
 
-  findById(id: number){
-    return this.http.get<any>(`${this.API_URL}/measures/${id}`)
-
+  findById(id: number) {
+    return this.http.get<any>(`${this.API_URL}/measures/${id}`);
   }
 }

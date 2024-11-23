@@ -35,12 +35,12 @@ export class ListMeasuresComponent implements OnInit {
       this.studentService
         .listStudentMeasures(this.sid)
         .subscribe((resposta) => {
-          if (resposta && resposta.Measures) {
-            this.myMeasures = resposta.Measures; // Extrai apenas os treinos
+          if (resposta && resposta.measures) {
+            this.myMeasures = resposta.measures; // Extrai apenas os treinos
           } else {
             this.myMeasures = []; // Garante que a lista seja inicializada
           }
-          console.log(this.myMeasures);
+          console.log('minhas medidas', this.myMeasures);
         });
     }
   }
