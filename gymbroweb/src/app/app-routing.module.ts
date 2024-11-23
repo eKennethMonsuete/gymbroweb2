@@ -42,14 +42,14 @@ const routes: Routes = [
     // canActivate: [AuthGuardService],
   },
   {
-    path: 'addpersonal',
+    path: 'personal',
     loadChildren: () =>
       import('./modules/user/personal/personal.module').then(
         (p) => p.PersonalModule
       ),
   },
   {
-    path: 'addstudent',
+    path: 'student',
     loadChildren: () =>
       import('./modules/user/student/student.module').then(
         (p) => p.StudentModule

@@ -12,6 +12,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
+import { PersonalEditComponent } from './personal-edit/personal-edit.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,7 @@ import { InputTextModule } from 'primeng/inputtext';
     ButtonModule,
     InputTextModule,
   ],
-  declarations: [PersonalFormComponent],
+  declarations: [PersonalFormComponent, PersonalEditComponent],
   schemas: [],
 })
 export class PersonalModule {}

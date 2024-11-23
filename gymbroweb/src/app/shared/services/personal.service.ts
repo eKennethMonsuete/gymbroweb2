@@ -33,4 +33,15 @@ export class PersonalService {
       `${this.API_URL}/personal/${id}`
     );
   }
+
+  update(id: number, personal: PersonalInput): Observable<PersonalResponse> {
+    return this.http.put<PersonalResponse>(
+      `${this.API_URL}/personal/${id}`,
+      personal
+    );
+  }
+
+  findById(id: number) {
+    return this.http.get<any>(`${this.API_URL}/personal/${id}`);
+  }
 }

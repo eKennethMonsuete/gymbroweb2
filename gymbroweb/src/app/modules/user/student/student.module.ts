@@ -8,9 +8,10 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { STUDENT_ROUTES } from './student.routing';
 import { RouterModule } from '@angular/router';
+import { StudentEditComponent } from './student-edit/student-edit.component';
 
 @NgModule({
-  declarations: [StudentFormComponent],
+  declarations: [StudentFormComponent, StudentEditComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(STUDENT_ROUTES),

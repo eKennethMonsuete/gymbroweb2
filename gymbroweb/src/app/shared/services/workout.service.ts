@@ -24,7 +24,17 @@ export class WorkoutService {
     return this.http.post<WorkoutResponse>(`${this.API_URL}/workout`, request);
   }
 
-  
+  updateWorkout(
+    id: number,
+    workout: WorkoutInput
+  ): Observable<WorkoutResponse> {
+    return this.http.put<WorkoutResponse>(
+      `${this.API_URL}/workout/${id}`,
+      workout
+    );
+  }
 
-  
+  findById(id: number) {
+    return this.http.get<any>(`${this.API_URL}/workout/${id}`);
+  }
 }

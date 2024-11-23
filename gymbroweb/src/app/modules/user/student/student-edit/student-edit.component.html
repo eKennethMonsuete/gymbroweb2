@@ -1,0 +1,176 @@
+<p-panel>
+  <h2 class="text-2xl font-bold text-bluegray-700">Atualizar Aluno</h2>
+  <form [formGroup]="studentInputFormUpdate" (ngSubmit)="updateStudent()">
+    <div class="card flex flex-column gap-3">
+      <!-- Campo Nome -->
+      <div class="field p-grid">
+        <label for="name" class="p-col-12">Nome:</label>
+        <div class="p-col-12">
+          <input
+            type="text"
+            pInputText
+            placeholder="Primeiro Nome"
+            id="name"
+            formControlName="name"
+            [ngClass]="{
+              'p-invalid':
+                studentInputFormUpdate.get('name')!.invalid &&
+                studentInputFormUpdate.get('name')!.touched
+            }"
+          />
+          <small
+            class="p-error"
+            *ngIf="
+              studentInputFormUpdate.get('name')!.hasError('required') &&
+              studentInputFormUpdate.get('name')!.touched
+            "
+          >
+            O nome é obrigatório.
+          </small>
+          <small
+            class="p-error"
+            *ngIf="
+              studentInputFormUpdate.get('name')!.hasError('onlyLetters') &&
+              studentInputFormUpdate.get('name')!.touched
+            "
+          >
+            O nome deve conter apenas letras.
+          </small>
+        </div>
+      </div>
+
+      <!-- Campo Sobrenome -->
+      <div class="field p-grid">
+        <label for="lastName" class="p-col-12">Sobrenome:</label>
+        <div class="p-col-12">
+          <input
+            type="text"
+            pInputText
+            placeholder="Sobrenome"
+            id="lastName"
+            formControlName="lastName"
+            [ngClass]="{
+              'p-invalid':
+                studentInputFormUpdate.get('lastName')!.invalid &&
+                studentInputFormUpdate.get('lastName')!.touched
+            }"
+          />
+          <small
+            class="p-error"
+            *ngIf="
+              studentInputFormUpdate.get('lastName')!.hasError('required') &&
+              studentInputFormUpdate.get('lastName')!.touched
+            "
+          >
+            O sobrenome é obrigatório.
+          </small>
+          <small
+            class="p-error"
+            *ngIf="
+              studentInputFormUpdate.get('lastName')!.hasError('onlyLetters') &&
+              studentInputFormUpdate.get('lastName')!.touched
+            "
+          >
+            O sobrenome deve conter apenas letras.
+          </small>
+        </div>
+      </div>
+
+      <!-- Campo Email -->
+      <div class="field p-grid">
+        <label for="email" class="p-col-12">Email:</label>
+        <div class="p-col-12">
+          <input
+            type="email"
+            pInputText
+            placeholder="email@dominio.com"
+            id="email"
+            formControlName="email"
+            [ngClass]="{
+              'p-invalid':
+                studentInputFormUpdate.get('email')!.invalid &&
+                studentInputFormUpdate.get('email')!.touched
+            }"
+          />
+          <small
+            class="p-error"
+            *ngIf="
+              studentInputFormUpdate.get('email')!.hasError('required') &&
+              studentInputFormUpdate.get('email')!.touched
+            "
+          >
+            O email é obrigatório.
+          </small>
+          <small
+            class="p-error"
+            *ngIf="
+              studentInputFormUpdate.get('email')!.hasError('email') &&
+              studentInputFormUpdate.get('email')!.touched
+            "
+          >
+            O formato do email é inválido.
+          </small>
+        </div>
+      </div>
+
+      <!-- Campo Telefone -->
+      <div class="field p-grid">
+        <label for="phone" class="p-col-12">WhatsApp/Telefone:</label>
+        <div class="p-col-12">
+          <input
+            type="text"
+            pInputText
+            placeholder="WhatsApp ou Telefone"
+            id="phone"
+            formControlName="phone"
+            [ngClass]="{
+              'p-invalid':
+                studentInputFormUpdate.get('phone')!.invalid &&
+                studentInputFormUpdate.get('phone')!.touched
+            }"
+          />
+          <small
+            class="p-error"
+            *ngIf="
+              studentInputFormUpdate.get('phone')!.hasError('required') &&
+              studentInputFormUpdate.get('phone')!.touched
+            "
+          >
+            O telefone é obrigatório.
+          </small>
+          <small
+            class="p-error"
+            *ngIf="studentInputFormUpdate.get('phone')!.hasError('maxlength')"
+          >
+            O telefone deve conter no máximo 15 caracteres.
+          </small>
+          <small
+            class="p-error"
+            *ngIf="
+              studentInputFormUpdate.get('phone')!.hasError('onlyNumbers') &&
+              studentInputFormUpdate.get('phone')!.touched
+            "
+          >
+            O telefone deve conter apenas números.
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botões -->
+    <div class="flex justify-content-center gap-3 mt-4 button-group">
+      <p-button
+        label="Atualizar Aluno"
+        styleClass="p-button-raised p-button-text"
+        type="submit"
+        [disabled]="!studentInputFormUpdate.valid"
+      ></p-button>
+      <p-button
+        styleClass="p-button-raised p-button-text p-button-danger"
+        label="Cancelar"
+        type="button"
+        (click)="cancelAndClearForm()"
+      ></p-button>
+    </div>
+  </form>
+</p-panel>

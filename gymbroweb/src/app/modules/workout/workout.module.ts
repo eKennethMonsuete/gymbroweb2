@@ -12,6 +12,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ListWorkoutComponent } from './list-workout/list-workout.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardModule } from 'primeng/card';
+import { WorkoutEditComponent } from './workout-edit/workout-edit.component';
 
 @NgModule({
   imports: [
@@ -25,9 +26,12 @@ import { CardModule } from 'primeng/card';
     InputTextModule,
     SharedModule,
     CardModule,
-    
   ],
-  declarations: [WorkoutFormComponent, ListWorkoutComponent],
+  declarations: [
+    WorkoutFormComponent,
+    ListWorkoutComponent,
+    WorkoutEditComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class WorkoutModule {}

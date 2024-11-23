@@ -38,4 +38,15 @@ export class StudentService {
       `${this.API_URL}/student/${id}`
     );
   }
+
+  update(id: number, data: StudentInput): Observable<StudentResponseSimple> {
+    return this.http.put<StudentResponseSimple>(
+      `${this.API_URL}/student/${id}`,
+      data
+    );
+  }
+
+  findById(id: number) {
+    return this.http.get<any>(`${this.API_URL}/student/${id}`);
+  }
 }
