@@ -1,3 +1,4 @@
+import { SharedModule } from './../../shared/shared.module';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WorkoutFormComponent } from './workout-form/workout-form.component';
@@ -9,6 +10,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { ListWorkoutComponent } from './list-workout/list-workout.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CardModule } from 'primeng/card';
 
 @NgModule({
   imports: [
@@ -20,6 +23,9 @@ import { ListWorkoutComponent } from './list-workout/list-workout.component';
     ReactiveFormsModule,
     ButtonModule,
     InputTextModule,
+    SharedModule,
+    CardModule,
+    //BrowserAnimationsModule,
   ],
   declarations: [WorkoutFormComponent, ListWorkoutComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

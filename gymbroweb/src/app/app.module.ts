@@ -40,7 +40,7 @@ import { WorkoutModule } from './modules/workout/workout.module';
     SharedModule,
     MeasuresModule,
     PersonalModule,
-    WorkoutModule
+    WorkoutModule,
   ],
   providers: [MessageService],
   bootstrap: [AppComponent],

@@ -27,8 +27,14 @@ export class StudentService {
       request
     );
   }
-  listStudentMeasures(id: string): Observable<Array<StudentMeasuresResponse>> {
-    return this.http.get<Array<StudentMeasuresResponse>>(
+  // listStudentMeasures(id: string): Observable<Array<StudentMeasuresResponse>> {
+  //   return this.http.get<Array<StudentMeasuresResponse>>(
+  //     `${this.API_URL}/student/${id}`
+  //   );
+  // }
+
+  listStudentMeasures(id: string): Observable<StudentMeasuresResponse> {
+    return this.http.get<StudentMeasuresResponse>(
       `${this.API_URL}/student/${id}`
     );
   }

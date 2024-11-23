@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MeasuresResponse } from 'src/app/shared/models/measures/measuresResponse';
 import { StudentMeasuresResponse } from 'src/app/shared/models/student/studentMeasuresResponse.';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { StudentService } from 'src/app/shared/services/student.service';
@@ -6,14 +7,13 @@ import { StudentService } from 'src/app/shared/services/student.service';
 @Component({
   selector: 'app-list-measures',
   templateUrl: './list-measures.component.html',
-  styleUrls: ['./list-measures.component.css']
+  styleUrls: ['./list-measures.component.css'],
 })
 export class ListMeasuresComponent implements OnInit {
-
   sid: string | null = null;
   role: string | null = null;
 
-  public myMeasures: Array<StudentMeasuresResponse> = [];
+  myMeasures: MeasuresResponse[] = [];
 
   constructor(
     private authService: AuthService,
@@ -35,10 +35,13 @@ export class ListMeasuresComponent implements OnInit {
       this.studentService
         .listStudentMeasures(this.sid)
         .subscribe((resposta) => {
-          this.myMeasures = resposta;
+          if (resposta && resposta.Measures) {
+            this.myMeasures = resposta.Measures; // Extrai apenas os treinos
+          } else {
+            this.myMeasures = []; // Garante que a lista seja inicializada
+          }
           console.log(this.myMeasures);
         });
     }
   }
-
 }

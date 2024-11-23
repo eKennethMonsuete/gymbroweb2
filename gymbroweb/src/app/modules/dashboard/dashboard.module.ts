@@ -21,6 +21,7 @@ import { CardModule } from 'primeng/card';
     PanelModule,
     ChartModule,
     CardModule,
+    ButtonModule,
   ],
 })
 export class DashboardModule {}

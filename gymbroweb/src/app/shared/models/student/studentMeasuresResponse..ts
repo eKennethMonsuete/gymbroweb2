@@ -1,3 +1,6 @@
+import { MeasuresResponse } from '../measures/measuresResponse';
+import { WorkoutResponse } from '../workout/workoutResponse';
+
 export interface StudentMeasuresResponse {
   name: string;
   email: string;
@@ -6,16 +9,7 @@ export interface StudentMeasuresResponse {
   phone: string;
   personalId: number;
   createdAt: string;
-  Measures: {
-    Weight: number;
-    Hips: number;
-    LeftBiceps: number;
-    RightBiceps: number;
-    LeftQuadriceps: number;
-    RightQuadriceps: number;
-    LeftCalf: number;
-    RightCalf: number;
-    createdAt: string;
-    PreviousDate: string;
-  };
+  Measures: MeasuresResponse[];
+
+  workouts: WorkoutResponse[];
 }
