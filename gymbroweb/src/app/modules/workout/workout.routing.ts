@@ -5,7 +5,7 @@ import { WorkoutEditComponent } from './workout-edit/workout-edit.component';
 
 export const WORKOUT_ROUTES: Routes = [
   {
-    path: '',
+    path: 'add',
     component: WorkoutFormComponent,
   },
   {

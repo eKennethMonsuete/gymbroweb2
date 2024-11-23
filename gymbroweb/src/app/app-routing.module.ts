@@ -18,14 +18,6 @@ const routes: Routes = [
     // canActivate: [AuthGuardService],
   },
   {
-    path: 'createmeasures',
-    loadChildren: () =>
-      import('./modules/measures/measures.module').then(
-        (m) => m.MeasuresModule
-      ),
-    // canActivate: [AuthGuardService],
-  },
-  {
     path: 'measures',
     loadChildren: () =>
       import('./modules/measures/measures.module').then(
@@ -33,14 +25,7 @@ const routes: Routes = [
       ),
     // canActivate: [AuthGuardService],
   },
-  {
-    path: 'mymeasures',
-    loadChildren: () =>
-      import('./modules/measures/measures.module').then(
-        (m) => m.MeasuresModule
-      ),
-    // canActivate: [AuthGuardService],
-  },
+
   {
     path: 'personal',
     loadChildren: () =>
@@ -56,12 +41,7 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'addworkout',
-    loadChildren: () =>
-      import('./modules/workout/workout.module').then((p) => p.WorkoutModule),
-  },
-  {
-    path: 'myworkout',
+    path: 'workout',
     loadChildren: () =>
       import('./modules/workout/workout.module').then((p) => p.WorkoutModule),
   },

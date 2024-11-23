@@ -4,7 +4,7 @@ import { StudentEditComponent } from './student-edit/student-edit.component';
 
 export const STUDENT_ROUTES: Routes = [
   {
-    path: '',
+    path: 'add',
     component: StudentFormComponent,
   },
   {

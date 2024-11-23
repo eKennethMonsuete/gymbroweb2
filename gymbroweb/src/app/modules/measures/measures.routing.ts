@@ -5,7 +5,7 @@ import { MeasuresEditComponent } from './measures-edit/measures-edit/measures-ed
 
 export const MEASURES_ROUTES: Routes = [
   {
-    path: '',
+    path: 'add',
     component: MeasuresFormComponent,
   },
   {
