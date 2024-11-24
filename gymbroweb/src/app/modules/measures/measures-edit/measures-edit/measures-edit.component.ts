@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { Subject, takeUntil } from 'rxjs';
 import { MeasuresUpdate } from 'src/app/shared/models/measures/measuresUpdate';
 import { MeasureService } from 'src/app/shared/services/measure.service';
 
@@ -12,11 +14,14 @@ import { MeasureService } from 'src/app/shared/services/measure.service';
 export class MeasuresEditComponent implements OnDestroy, OnInit {
   measureId: number = 0;
   formMeasuresUpdate!: FormGroup;
+  private readonly destroy$: Subject<void> = new Subject();
 
   constructor(
     private measureService: MeasureService,
     private route: ActivatedRoute,
-    private formBuilder: FormBuilder
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private messageService: MessageService
   ) {
     this.formMeasuresUpdate = this.formBuilder.group({
       weight: ['', [Validators.required, Validators.min(0)]],
@@ -34,9 +39,6 @@ export class MeasuresEditComponent implements OnDestroy, OnInit {
 
   ngOnInit(): void {
     this.getMeasureId();
-  }
-  ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
   }
 
   getMeasureId() {
@@ -62,14 +64,38 @@ export class MeasuresEditComponent implements OnDestroy, OnInit {
       };
       this.measureService
         .updateMeasures(this.measureId, updatedMeasures)
-        .subscribe(
-          (response) => {
-            console.log('deu certo');
+        .pipe(takeUntil(this.destroy$))
+        .subscribe({
+          next: (response) => {
+            if (response) {
+              console.log(response);
+              this.messageService.add({
+                severity: 'success',
+                summary: 'Sucesso',
+                detail: 'Medida atualizada com sucesso!',
+                life: 2500,
+              });
+              setTimeout(() => {
+                this.router.navigate(['dashboard']);
+              }, 3000);
+            }
           },
-          (error) => {
-            console.error('deu erro', error);
-          }
-        );
+          error: (err) => {
+            console.log(err);
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Erro',
+              detail: 'Erro ao atualizar Medidas!',
+              life: 2500,
+            });
+          },
+        });
+      //this.router.navigate(['dashboard']);
     }
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

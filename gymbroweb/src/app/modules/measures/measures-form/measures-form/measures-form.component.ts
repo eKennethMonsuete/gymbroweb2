@@ -4,6 +4,7 @@ import { Subject, take, takeUntil } from 'rxjs';
 import { MeasuresInput } from 'src/app/shared/models/measures/measuresInput';
 import { MeasureService } from 'src/app/shared/services/measure.service';
 import { MessageService } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-measures-form',
@@ -15,7 +16,8 @@ export class MeasuresFormComponent implements OnDestroy {
   constructor(
     private formBuilder: FormBuilder,
     private measureService: MeasureService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private router: Router
   ) {}
 
   public addMeasureForm = this.formBuilder.group({
@@ -60,6 +62,9 @@ export class MeasuresFormComponent implements OnDestroy {
                 detail: 'Medida registrada com sucesso!',
                 life: 2500,
               });
+              setTimeout(() => {
+                this.router.navigate(['dashboard']);
+              }, 3000);
             }
           },
           error: (err) => {
