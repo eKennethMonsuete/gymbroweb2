@@ -68,7 +68,7 @@ export class StudentFormComponent implements OnInit, OnDestroy {
               this.messageService.add({
                 severity: 'success',
                 summary: 'Sucesso',
-                detail: 'Personal registrado com sucesso!',
+                detail: 'Aluno registrado com sucesso!',
                 life: 2500,
               });
             }
@@ -78,14 +78,14 @@ export class StudentFormComponent implements OnInit, OnDestroy {
             this.messageService.add({
               severity: 'error',
               summary: 'Erro',
-              detail: 'Erro ao cadastrar Personal!',
+              detail: 'Erro ao cadastrar Aluno!',
               life: 2500,
             });
           },
         });
       setTimeout(() => {
         this.router.navigate(['dashboard']);
-      }, 3000);
+      }, 2600);
       // this.AddStudentForm.reset();
       // this.router.navigate(['dashboard']);
     }
