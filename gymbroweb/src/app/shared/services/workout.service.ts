@@ -41,4 +41,8 @@ export class WorkoutService {
   findById(id: number) {
     return this.http.get<any>(`${this.API_URL}/workout/${id}`);
   }
+
+  delete(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.API_URL}/workout/${id}`);
+  }
 }

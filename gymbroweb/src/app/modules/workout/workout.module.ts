@@ -13,6 +13,8 @@ import { ListWorkoutComponent } from './list-workout/list-workout.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardModule } from 'primeng/card';
 import { WorkoutEditComponent } from './workout-edit/workout-edit.component';
+import { ConfirmationService } from 'primeng/api';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @NgModule({
   imports: [
@@ -26,6 +28,7 @@ import { WorkoutEditComponent } from './workout-edit/workout-edit.component';
     InputTextModule,
     SharedModule,
     CardModule,
+    ConfirmDialogModule,
   ],
   declarations: [
     WorkoutFormComponent,
@@ -33,5 +36,6 @@ import { WorkoutEditComponent } from './workout-edit/workout-edit.component';
     WorkoutEditComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [ConfirmationService],
 })
 export class WorkoutModule {}

@@ -51,4 +51,8 @@ export class StudentService {
       `${this.API_URL}/student/${id}`
     );
   }
+
+  delete(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.API_URL}/student/${id}`);
+  }
 }

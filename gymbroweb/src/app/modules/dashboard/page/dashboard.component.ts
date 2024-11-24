@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartData, ChartOptions } from 'chart.js';
+import { ConfirmationService } from 'primeng/api';
 import { MeasuresResponse } from 'src/app/shared/models/measures/measuresResponse';
 import { StudentMeasuresResponse } from 'src/app/shared/models/student/studentMeasuresResponse.';
 import { StudentResponseSimple } from 'src/app/shared/models/student/studentResponseSimple';
@@ -33,7 +34,8 @@ export class DashboardComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private studentService: StudentService,
-    private personalService: PersonalService
+    private personalService: PersonalService,
+    private confirmationService: ConfirmationService
   ) {}
 
   ngOnInit(): void {
@@ -165,6 +167,35 @@ export class DashboardComponent implements OnInit {
         },
       },
     };
+  }
+  confirmDelete(id: number) {
+    this.confirmationService.confirm({
+      message: 'Tem certeza que deseja excluir este item?',
+      header: 'Confirmação de Exclusão',
+      icon: 'pi pi-exclamation-triangle',
+      acceptLabel: 'Sim', // Texto do botão de confirmação
+      rejectLabel: 'Não',
+      accept: () => {
+        this.deleteItem(id); // Chama a função de exclusão
+      },
+      reject: () => {
+        // Você pode executar algo no caso de rejeição, se necessário
+        console.log('Ação cancelada!');
+      },
+    });
+  }
+
+  deleteItem(id: number) {
+    this.studentService.delete(id).subscribe(
+      () => {
+        console.log('Item excluído com sucesso!');
+        this.getStudentsForPersonal();
+        // Atualize a lista ou exiba uma mensagem ao usuário
+      },
+      (error) => {
+        console.error('Erro ao excluir item:', error);
+      }
+    );
   }
 
   // setProductsChartConfig(): void {

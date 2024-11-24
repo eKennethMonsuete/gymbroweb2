@@ -41,4 +41,7 @@ export class MeasureService {
   findById(id: number) {
     return this.http.get<any>(`${this.API_URL}/measures/${id}`);
   }
+  delete(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.API_URL}/measures/${id}`);
+  }
 }

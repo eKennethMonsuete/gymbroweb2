@@ -11,7 +11,8 @@ import { MeasuresEditComponent } from './measures-edit/measures-edit/measures-ed
 import { InputTextModule } from 'primeng/inputtext';
 import { ListMeasuresComponent } from './list-measures/list-measures.component';
 import { CardModule } from 'primeng/card';
-import { SharedModule } from 'primeng/api';
+import { ConfirmationService, SharedModule } from 'primeng/api';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,9 @@ import { SharedModule } from 'primeng/api';
     InputTextModule,
     CardModule,
     SharedModule,
+    ConfirmDialogModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [ConfirmationService],
 })
 export class MeasuresModule {}

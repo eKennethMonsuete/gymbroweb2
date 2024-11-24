@@ -12,6 +12,8 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { PanelModule } from 'primeng/panel';
 import { CardModule } from 'primeng/card';
 import { TableModule } from 'primeng/table';
+import { ConfirmationService } from 'primeng/api';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @NgModule({
   declarations: [DashboardComponent],
@@ -24,6 +26,8 @@ import { TableModule } from 'primeng/table';
     CardModule,
     ButtonModule,
     TableModule,
+    ConfirmDialogModule,
   ],
+  providers: [ConfirmationService],
 })
 export class DashboardModule {}
