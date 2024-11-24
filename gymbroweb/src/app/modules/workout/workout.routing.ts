@@ -9,7 +9,7 @@ export const WORKOUT_ROUTES: Routes = [
     component: WorkoutFormComponent,
   },
   {
-    path: 'list',
+    path: 'list/:id',
     component: ListWorkoutComponent,
   },
   {

@@ -34,7 +34,12 @@ export class AuthService {
     return localStorage.getItem(this.tokenKey);
   }
 
-  decodeToken(): { sid: string; role: string; email: string } | null {
+  decodeToken(): {
+    sid: string;
+    role: string;
+    email: string;
+    name: string;
+  } | null {
     const token = this.getToken();
     if (!token) {
       return null;
@@ -53,6 +58,9 @@ export class AuthService {
           decodedToken[
             'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress'
           ],
+        name: decodedToken[
+          'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'
+        ],
       };
     } catch (error) {
       console.error('Erro ao decodificar o token:', error);

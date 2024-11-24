@@ -1,25 +1,28 @@
 import { WorkoutInput } from './../../../shared/models/workout/workoutInput';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { Subject, takeUntil } from 'rxjs';
 import { WorkoutService } from 'src/app/shared/services/workout.service';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-workout-edit',
   templateUrl: './workout-edit.component.html',
   styleUrls: ['./workout-edit.component.css'],
 })
-export class WorkoutEditComponent implements OnInit {
+export class WorkoutEditComponent implements OnInit, OnDestroy {
   workoutId: number = 0;
   workoutInputFormUpdate!: FormGroup;
+  private readonly destroy$: Subject<void> = new Subject();
 
   constructor(
     private formBuilder: FormBuilder,
     private messageService: MessageService,
     private router: Router,
     private workoutService: WorkoutService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location: Location
   ) {
     this.workoutInputFormUpdate = this.formBuilder.group({
       workoutName: ['', [Validators.required]],
@@ -58,14 +61,41 @@ export class WorkoutEditComponent implements OnInit {
       };
       this.workoutService
         .updateWorkout(this.workoutId, updatedWorkout)
-        .subscribe(
-          (response) => {
-            console.log('deu certo');
+        .pipe(takeUntil(this.destroy$))
+        .subscribe({
+          next: (response) => {
+            if (response) {
+              console.log(response);
+              this.messageService.add({
+                severity: 'success',
+                summary: 'Sucesso',
+                detail: 'Treino atualizada com sucesso!',
+                life: 2500,
+              });
+            }
           },
-          (error) => {
-            console.error('deu erro', error);
-          }
-        );
+          error: (err) => {
+            console.log(err);
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Erro',
+              detail: 'Erro ao atualizar Treino!',
+              life: 2500,
+            });
+          },
+        });
+      setTimeout(() => {
+        this.location.back();
+      }, 3000);
     }
+  }
+
+  cancel() {
+    this.router.navigate(['dashboard']);
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

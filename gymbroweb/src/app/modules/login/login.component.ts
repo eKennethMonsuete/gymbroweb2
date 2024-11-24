@@ -41,11 +41,14 @@ export class LoginComponent {
             if (tokenData) {
               console.log('SID:', tokenData.sid);
               console.log('Role:', tokenData.role);
+              console.log('name:', tokenData.name);
               if (tokenData.role == 'STUDENT') {
                 localStorage.setItem('idStudent', tokenData.sid);
+                localStorage.setItem('studentName', tokenData.name);
               }
               if (tokenData.role == 'PERSONAL') {
                 localStorage.setItem('idPersonal', tokenData.sid);
+                localStorage.setItem('personalName', tokenData.name);
               }
             }
             this.loginForm.reset();

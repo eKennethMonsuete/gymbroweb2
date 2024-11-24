@@ -1,4 +1,5 @@
 export interface MeasuresResponse {
+  id: number;
   weight: number;
   hips: number;
   leftBiceps: number;

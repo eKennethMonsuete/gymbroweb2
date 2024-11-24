@@ -15,6 +15,7 @@ import { StudentService } from 'src/app/shared/services/student.service';
 export class DashboardComponent implements OnInit {
   sid: string | null = null;
   role: string | null = null;
+  name: string | null = null;
 
   //public myMeasures: Array<StudentMeasuresResponse> = [];
   myMeasures: MeasuresResponse[] = [];
@@ -34,6 +35,7 @@ export class DashboardComponent implements OnInit {
     if (tokenData) {
       this.sid = tokenData.sid;
       this.role = tokenData.role;
+      this.name = tokenData.name;
     }
     console.log(this.sid, this.role);
     this.getMyMeasures();

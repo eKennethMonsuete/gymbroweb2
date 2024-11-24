@@ -1,4 +1,7 @@
 <div class="flex flex-wrap justify-center gap-4 w-full">
+  <div *ngIf="myMeasuresAndWorkouts.length === 0">
+    <h1>NÃO HÁ TREINOS REGISTRADOS PARA VOCÊ</h1>
+  </div>
   <div
     *ngFor="let workout of myMeasuresAndWorkouts"
     class="w-full sm:w-6 md:w-4 lg:w-2 xl:w-1/5 flex"
@@ -22,6 +25,7 @@
             label="Editar"
             severity="secondary"
             class="w-full"
+            [routerLink]="['/workout/update', workout.id]"
           ></p-button>
           <p-button label="Excluir" class="w-full"></p-button>
         </div>

@@ -9,7 +9,7 @@ export const MEASURES_ROUTES: Routes = [
     component: MeasuresFormComponent,
   },
   {
-    path: 'list',
+    path: 'list/:id',
     component: ListMeasuresComponent,
   },
   {

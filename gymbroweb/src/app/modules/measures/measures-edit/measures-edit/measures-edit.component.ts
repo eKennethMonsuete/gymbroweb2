@@ -5,7 +5,7 @@ import { MessageService } from 'primeng/api';
 import { Subject, takeUntil } from 'rxjs';
 import { MeasuresUpdate } from 'src/app/shared/models/measures/measuresUpdate';
 import { MeasureService } from 'src/app/shared/services/measure.service';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-measures-edit',
   templateUrl: './measures-edit.component.html',
@@ -20,6 +20,7 @@ export class MeasuresEditComponent implements OnDestroy, OnInit {
     private measureService: MeasureService,
     private route: ActivatedRoute,
     private router: Router,
+    private location: Location,
     private formBuilder: FormBuilder,
     private messageService: MessageService
   ) {
@@ -75,9 +76,6 @@ export class MeasuresEditComponent implements OnDestroy, OnInit {
                 detail: 'Medida atualizada com sucesso!',
                 life: 2500,
               });
-              setTimeout(() => {
-                this.router.navigate(['dashboard']);
-              }, 3000);
             }
           },
           error: (err) => {
@@ -90,6 +88,10 @@ export class MeasuresEditComponent implements OnDestroy, OnInit {
             });
           },
         });
+      setTimeout(() => {
+        this.location.back();
+      }, 3000);
+
       //this.router.navigate(['dashboard']);
     }
   }
