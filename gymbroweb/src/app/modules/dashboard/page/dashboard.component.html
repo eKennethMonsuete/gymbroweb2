@@ -1,4 +1,3 @@
-<app-toolbar-navigation></app-toolbar-navigation>
 <p-panel
   *ngIf="role === 'STUDENT'"
   header="SEU ASSISTENTE PESSOAL"
@@ -24,10 +23,17 @@
             <p-button
               label="SALVAR NOVAS MEDIDAS"
               styleClass="p-button-raised p-button-text p-button-secondary"
-              routerLink=""
+              routerLink="/measures/add"
             ></p-button>
           </div>
         </div>
+      </div>
+      <div class="card">
+        <p-chart
+          type="bar"
+          [data]="basicData"
+          [options]="basicOptions"
+        ></p-chart>
       </div>
       <!-- GRÁFICO DE PRODUTOS EM ESTOQUE -->
       <!-- <p-card

@@ -69,7 +69,7 @@ export class WorkoutEditComponent implements OnInit, OnDestroy {
               this.messageService.add({
                 severity: 'success',
                 summary: 'Sucesso',
-                detail: 'Treino atualizada com sucesso!',
+                detail: 'Treino atualizado com sucesso!',
                 life: 2500,
               });
             }
@@ -91,7 +91,8 @@ export class WorkoutEditComponent implements OnInit, OnDestroy {
   }
 
   cancel() {
-    this.router.navigate(['dashboard']);
+    //  this.router.navigate(['dashboard']);
+    this.location.back();
   }
 
   ngOnDestroy(): void {

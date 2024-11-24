@@ -95,6 +95,10 @@ export class MeasuresEditComponent implements OnDestroy, OnInit {
       //this.router.navigate(['dashboard']);
     }
   }
+  cancel() {
+    //  this.router.navigate(['dashboard']);
+    this.location.back();
+  }
 
   ngOnDestroy(): void {
     this.destroy$.next();

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ChartData, ChartOptions } from 'chart.js';
 import { MeasuresResponse } from 'src/app/shared/models/measures/measuresResponse';
 import { StudentMeasuresResponse } from 'src/app/shared/models/student/studentMeasuresResponse.';
 import { StudentResponseSimple } from 'src/app/shared/models/student/studentResponseSimple';
@@ -16,13 +17,18 @@ export class DashboardComponent implements OnInit {
   sid: string | null = null;
   role: string | null = null;
   name: string | null = null;
+  showToolbar: boolean = true;
+
+  // basicData: any;
+
+  // basicOptions: any;
 
   //public myMeasures: Array<StudentMeasuresResponse> = [];
   myMeasures: MeasuresResponse[] = [];
   myStudents: StudentResponseSimple[] = [];
 
-  // public productsChartDatas!: ChartData;
-  // public productsChartOptions!: ChartOptions;
+  public basicData!: ChartData;
+  public basicOptions!: ChartOptions;
 
   constructor(
     private authService: AuthService,
@@ -41,19 +47,37 @@ export class DashboardComponent implements OnInit {
     this.getMyMeasures();
     this.getStudentsForPersonal();
     //this.setProductsChartConfig();
+    this.updateChartData();
   }
+
+  // getMyMeasures(): void {
+  //   if (this.sid !== null && this.role == 'STUDENT') {
+  //     this.studentService
+  //       .listStudentMeasures(this.sid)
+  //       .subscribe((resposta) => {
+  //         if (resposta && resposta.measures) {
+  //           this.myMeasures = resposta.measures; // Extrai apenas os treinos
+  //         } else {
+  //           this.myMeasures = []; // Garante que a lista seja inicializada
+  //         }
+  //         console.log(this.myMeasures);
+  //       });
+  //   }
 
   getMyMeasures(): void {
     if (this.sid !== null && this.role == 'STUDENT') {
       this.studentService
         .listStudentMeasures(this.sid)
         .subscribe((resposta) => {
+          console.log('Resposta do backend:', resposta);
           if (resposta && resposta.measures) {
-            this.myMeasures = resposta.measures; // Extrai apenas os treinos
+            this.myMeasures = resposta.measures;
+            console.log('Dados de myMeasures:', this.myMeasures);
+            this.updateChartData(); // Atualiza o gráfico com os dados dinâmicos
           } else {
-            this.myMeasures = []; // Garante que a lista seja inicializada
+            this.myMeasures = [];
+            console.log('Nenhuma medida encontrada.');
           }
-          console.log(this.myMeasures);
         });
     }
   }
@@ -72,6 +96,75 @@ export class DashboardComponent implements OnInit {
           console.log('Meus alunos', this.myStudents);
         });
     }
+  }
+
+  updateChartData(): void {
+    const documentStyle = getComputedStyle(document.documentElement);
+    const textColor = documentStyle.getPropertyValue('--text-color');
+    const textColorSecondary = documentStyle.getPropertyValue(
+      '--text-color-secondary'
+    );
+    const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
+
+    // Gera rótulos incrementais (1, 2, 3, ...)
+    const labels = this.myMeasures.map((_, index) => (index + 1).toString());
+
+    // Extrai os valores de peso
+    const weights = this.myMeasures.map((measure) => measure.weight);
+
+    this.basicData = {
+      labels: labels,
+      datasets: [
+        {
+          label: 'Peso (kg)',
+          data: weights,
+          backgroundColor: [
+            'rgba(255, 159, 64, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+          ],
+          borderColor: [
+            'rgb(255, 159, 64)',
+            'rgb(75, 192, 192)',
+            'rgb(54, 162, 235)',
+            'rgb(153, 102, 255)',
+          ],
+          borderWidth: 1,
+        },
+      ],
+    };
+
+    this.basicOptions = {
+      plugins: {
+        legend: {
+          labels: {
+            color: textColor,
+          },
+        },
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            color: textColorSecondary,
+          },
+          grid: {
+            color: surfaceBorder,
+            // drawBorder: false,
+          },
+        },
+        x: {
+          ticks: {
+            color: textColorSecondary,
+          },
+          grid: {
+            color: surfaceBorder,
+            // drawBorder: false,
+          },
+        },
+      },
+    };
   }
 
   // setProductsChartConfig(): void {
