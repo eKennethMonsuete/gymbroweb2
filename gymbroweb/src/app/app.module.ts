@@ -18,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 
 import { MeasuresModule } from './modules/measures/measures.module';
 import { PersonalModule } from './modules/user/personal/personal.module';
@@ -41,6 +42,7 @@ import { WorkoutModule } from './modules/workout/workout.module';
     MeasuresModule,
     PersonalModule,
     WorkoutModule,
+    ToastModule,
   ],
   providers: [MessageService],
   bootstrap: [AppComponent],

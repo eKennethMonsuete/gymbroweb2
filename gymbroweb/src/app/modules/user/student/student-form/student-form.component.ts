@@ -15,6 +15,9 @@ import { onlyNumbersValidator } from 'src/app/shared/validators/numberValidator'
 })
 export class StudentFormComponent implements OnInit, OnDestroy {
   private readonly destroy$: Subject<void> = new Subject();
+
+  idPersonalAuto: number = Number(localStorage.getItem('idPersonal')) || 0;
+  //=
   constructor(
     private formBuilder: FormBuilder,
     private studentService: StudentService,
@@ -22,7 +25,9 @@ export class StudentFormComponent implements OnInit, OnDestroy {
     private router: Router
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('auto id', this.idPersonalAuto);
+  }
 
   public AddStudentForm = this.formBuilder.group({
     name: ['', [Validators.required, onlyLettersValidator()]],
@@ -34,7 +39,7 @@ export class StudentFormComponent implements OnInit, OnDestroy {
       '',
       [Validators.required, onlyNumbersValidator(), Validators.maxLength(15)],
     ],
-    personalId: ['', [Validators.required, Validators.min(0)]],
+    // personalId: ['', [Validators.required, Validators.min(0)]],
   });
 
   addStudent(): void {
@@ -50,7 +55,7 @@ export class StudentFormComponent implements OnInit, OnDestroy {
         password: this.AddStudentForm.value.password as string,
         lastName: this.AddStudentForm.value.lastName as string,
         phone: this.AddStudentForm.value.phone as string,
-        personalId: Number(this.AddStudentForm.value.personalId),
+        personalId: this.idPersonalAuto,
       };
       console.log(requestAddStudent);
       this.studentService
@@ -78,8 +83,8 @@ export class StudentFormComponent implements OnInit, OnDestroy {
             });
           },
         });
-      this.AddStudentForm.reset();
-      this.router.navigate(['dashboard']);
+      // this.AddStudentForm.reset();
+      // this.router.navigate(['dashboard']);
     }
   }
 

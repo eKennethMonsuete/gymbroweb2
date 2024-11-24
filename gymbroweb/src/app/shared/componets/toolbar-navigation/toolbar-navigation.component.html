@@ -13,7 +13,7 @@
       style="cursor: pointer; text-decoration: none"
     >
       <p-avatar
-        image="../../../../assets/images/workout.png"
+        image="../../../../assets/images/two.png"
         shape="circle"
         size="xlarge"
       ></p-avatar>
@@ -23,6 +23,7 @@
 
   <div class="p-toolbar-group-center">
     <button
+      routerLink="/dashboard"
       class="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem border-circle hover:bg-white-alpha-10 transition-all transition-duration-200"
     >
       <i class="pi pi-home text-2xl"></i>
@@ -50,11 +51,11 @@
   </div>
   <div class="p-toolbar-group-end">
     <div class="flex align-items-center gap-2">
-      <p-avatar
-        image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
-        shape="circle"
-      />
-      <span class="font-bold text-bluegray-50"> Amy Elsner </span>
+      <p-button
+        label="LOGOUT"
+        styleClass="p-button-raised p-button-text p-button-danger"
+        (click)="logout()"
+      ></p-button>
     </div>
   </div>
 </p-toolbar>
