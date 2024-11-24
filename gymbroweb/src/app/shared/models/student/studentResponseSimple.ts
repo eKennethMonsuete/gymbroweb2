@@ -6,4 +6,5 @@ export interface StudentResponseSimple {
   lastName: string;
   phone: string;
   createdAt: string;
+  personalId: number;
 }

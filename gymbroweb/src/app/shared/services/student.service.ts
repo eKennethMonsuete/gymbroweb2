@@ -47,6 +47,8 @@ export class StudentService {
   }
 
   findById(id: number) {
-    return this.http.get<any>(`${this.API_URL}/student/${id}`);
+    return this.http.get<StudentResponseSimple>(
+      `${this.API_URL}/student/${id}`
+    );
   }
 }

@@ -22,12 +22,17 @@
       <ng-template pTemplate="footer">
         <div class="flex gap-3 mt-1">
           <p-button
+            styleClass="p-button-raised p-button-text p-button-secondary"
             label="Editar"
             severity="secondary"
             class="w-full"
             [routerLink]="['/workout/update', workout.id]"
           ></p-button>
-          <p-button label="Excluir" class="w-full"></p-button>
+          <p-button
+            styleClass="p-button-raised p-button-text p-button-danger"
+            label="Excluir"
+            class="w-full"
+          ></p-button>
         </div>
       </ng-template>
     </p-card>

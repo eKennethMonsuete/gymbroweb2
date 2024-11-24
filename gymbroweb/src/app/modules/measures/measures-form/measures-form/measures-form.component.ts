@@ -81,6 +81,11 @@ export class MeasuresFormComponent implements OnDestroy {
     this.addMeasureForm.reset();
   }
 
+  cancel() {
+    this.router.navigate(['dashboard']);
+    // this.location.back();
+  }
+
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();

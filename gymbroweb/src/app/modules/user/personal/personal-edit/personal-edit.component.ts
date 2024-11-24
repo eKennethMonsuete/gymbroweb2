@@ -6,7 +6,7 @@ import { PersonalInput } from 'src/app/shared/models/personal/personalInput';
 import { PersonalService } from 'src/app/shared/services/personal.service';
 import { onlyLettersValidator } from 'src/app/shared/validators/lettersValidator';
 import { onlyNumbersValidator } from 'src/app/shared/validators/numberValidator';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-personal-edit',
   templateUrl: './personal-edit.component.html',
@@ -21,7 +21,8 @@ export class PersonalEditComponent implements OnInit {
     private messageService: MessageService,
     private router: Router,
     private personalService: PersonalService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location: Location
   ) {
     this.personalInputFormUpdate = this.formBuilder.group({
       name: ['', [Validators.required, onlyLettersValidator()]],
@@ -62,12 +63,25 @@ export class PersonalEditComponent implements OnInit {
       };
       this.personalService.update(this.personalId, updatedpersonal).subscribe(
         (response) => {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Atualização',
+            detail: 'Perfil atualizado com sucesso!',
+          });
           console.log('deu certo');
+          // this.router.navigate(['/students']); // Altere o caminho conforme necessário
         },
         (error) => {
-          console.error('deu erro', error);
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Erro',
+            detail: 'Erro ao atualizar perfil.',
+          });
         }
       );
+      setTimeout(() => {
+        this.location.back();
+      }, 3000);
     }
   }
 }

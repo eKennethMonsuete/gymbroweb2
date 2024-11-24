@@ -23,26 +23,29 @@
 
   <div class="p-toolbar-group-center">
     <button
+      title="Ir para tela inicial"
       routerLink="/dashboard"
       class="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem border-circle hover:bg-white-alpha-10 transition-all transition-duration-200"
     >
       <i class="pi pi-home text-2xl"></i>
     </button>
     <button
+      *ngIf="role === 'STUDENT'"
+      title="Editar perfil estudante"
       class="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem border-circle hover:bg-white-alpha-10 transition-all transition-duration-200"
+      [routerLink]="['/student/update', sid]"
     >
       <i class="pi pi-user text-2xl"></i>
     </button>
     <button
+      *ngIf="role === 'PERSONAL'"
+      title="Editar perfil personal"
       class="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem border-circle hover:bg-white-alpha-10 transition-all transition-duration-200"
+      [routerLink]="['/personal/update', sid]"
     >
-      <i class="pi pi-home text-2xl"></i>
+      <i class="pi pi-user text-2xl"></i>
     </button>
-    <button
-      class="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem border-circle hover:bg-white-alpha-10 transition-all transition-duration-200"
-    >
-      <i class="pi pi-home text-2xl"></i>
-    </button>
+
     <button
       class="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem border-circle hover:bg-white-alpha-10 transition-all transition-duration-200"
     >
@@ -52,6 +55,7 @@
   <div class="p-toolbar-group-end">
     <div class="flex align-items-center gap-2">
       <p-button
+        title="Sair do sistema"
         label="LOGOUT"
         styleClass="p-button-raised p-button-text p-button-danger"
         (click)="logout()"

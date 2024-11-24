@@ -6,6 +6,7 @@ import { StudentInput } from 'src/app/shared/models/student/studentInput';
 import { StudentService } from 'src/app/shared/services/student.service';
 import { onlyLettersValidator } from 'src/app/shared/validators/lettersValidator';
 import { onlyNumbersValidator } from 'src/app/shared/validators/numberValidator';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-student-edit',
@@ -21,7 +22,8 @@ export class StudentEditComponent implements OnInit {
     private messageService: MessageService,
     private router: Router,
     private studentService: StudentService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location: Location
   ) {
     this.studentInputFormUpdate = this.formBuilder.group({
       name: ['', [Validators.required, onlyLettersValidator()]],
@@ -31,14 +33,18 @@ export class StudentEditComponent implements OnInit {
         '',
         [Validators.required, onlyNumbersValidator(), Validators.maxLength(15)],
       ],
+      personalId: [
+        '',
+        [Validators.required, onlyNumbersValidator(), Validators.maxLength(15)],
+      ],
     });
   }
 
   ngOnInit() {
-    this.getPersonalId();
+    this.getStudentId();
   }
 
-  getPersonalId() {
+  getStudentId() {
     const id = this.route.snapshot.paramMap.get('id');
     this.studentId = id !== null ? +id : 0;
 
@@ -51,7 +57,7 @@ export class StudentEditComponent implements OnInit {
           }
         });
     }
-    console.log(this.studentId);
+    console.log('studante id tela edit studante', this.studentId);
   }
 
   updateStudent() {
@@ -63,6 +69,7 @@ export class StudentEditComponent implements OnInit {
 
       this.studentService.update(this.studentId, student).subscribe(
         (response) => {
+          console.log(response);
           this.messageService.add({
             severity: 'success',
             summary: 'Atualização',
@@ -79,10 +86,14 @@ export class StudentEditComponent implements OnInit {
           });
         }
       );
+      setTimeout(() => {
+        this.location.back();
+      }, 3000);
     }
   }
   cancelAndClearForm() {
-    this.studentInputFormUpdate.reset();
-    this.router.navigate(['/students']); // Altere o caminho conforme necessário
+    // this.studentInputFormUpdate.reset();
+    this.location.back();
+    //this.router.navigate(['/students']); // Altere o caminho conforme necessário
   }
 }

@@ -156,6 +156,50 @@
         </div>
       </div>
     </div>
+    <!-- Campo Personal ID -->
+    <div class="field p-grid">
+      <label for="personalId" class="p-col-12">Personal ID:</label>
+      <div class="p-col-12">
+        <input
+          type="number"
+          pInputText
+          placeholder="Insira o ID do Personal"
+          id="personalId"
+          formControlName="personalId"
+          [ngClass]="{
+            'p-invalid':
+              studentInputFormUpdate.get('personalId')!.invalid &&
+              studentInputFormUpdate.get('personalId')!.touched
+          }"
+        />
+        <small
+          class="p-error"
+          *ngIf="
+            studentInputFormUpdate.get('personalId')!.hasError('required') &&
+            studentInputFormUpdate.get('personalId')!.touched
+          "
+        >
+          O ID do Personal é obrigatório.
+        </small>
+        <small
+          class="p-error"
+          *ngIf="
+            studentInputFormUpdate.get('personalId')!.hasError('maxlength')
+          "
+        >
+          O ID do Personal deve conter no máximo 15 caracteres.
+        </small>
+        <small
+          class="p-error"
+          *ngIf="
+            studentInputFormUpdate.get('personalId')!.hasError('onlyNumbers') &&
+            studentInputFormUpdate.get('personalId')!.touched
+          "
+        >
+          O ID do Personal deve conter apenas números.
+        </small>
+      </div>
+    </div>
 
     <!-- Botões -->
     <div class="flex justify-content-center gap-3 mt-4 button-group">

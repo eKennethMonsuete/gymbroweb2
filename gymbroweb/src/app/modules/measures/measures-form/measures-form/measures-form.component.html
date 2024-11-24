@@ -372,7 +372,14 @@
         <p-button
           type="submit"
           label="Registrar"
+          styleClass="p-button-raised p-button-text p-button-secondary"
           [disabled]="addMeasureForm.invalid"
+        ></p-button>
+        <p-button
+          styleClass="p-button-raised p-button-text p-button-danger"
+          label="Cancelar"
+          type="button"
+          (click)="cancel()"
         ></p-button>
       </div>
     </div>
