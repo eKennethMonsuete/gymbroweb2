@@ -15,7 +15,7 @@ export class PersonalService {
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${this.JWT_TOKEN}`,
+      //Authorization: `Bearer ${this.JWT_TOKEN}`,
     }),
   };
 
@@ -24,7 +24,8 @@ export class PersonalService {
   createPersonal(request: PersonalInput): Observable<PersonalResponse> {
     return this.http.post<PersonalResponse>(
       `${this.API_URL}/personal`,
-      request
+      request,
+      this.httpOptions
     );
   }
 

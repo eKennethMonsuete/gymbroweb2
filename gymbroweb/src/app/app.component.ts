@@ -12,7 +12,9 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.router.events.subscribe(() => {
       const currentRoute = this.router.url;
-      this.showToolbar = !(currentRoute === '/' || currentRoute === '/login');
+      this.showToolbar = !(
+        currentRoute === '/' || currentRoute === '/personal/add'
+      );
     });
   }
   title = 'gymbroweb';

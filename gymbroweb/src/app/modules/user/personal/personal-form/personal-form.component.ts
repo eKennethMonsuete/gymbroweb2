@@ -52,6 +52,7 @@ export class PersonalFormComponent implements OnInit, OnDestroy {
         phone: this.AddPersonalForm.value.phone as string,
       };
       console.log(requestAddPersonal);
+
       this.personalService
         .createPersonal(requestAddPersonal)
         .pipe(takeUntil(this.destroy$))
@@ -65,7 +66,7 @@ export class PersonalFormComponent implements OnInit, OnDestroy {
                 detail: 'Personal registrado com sucesso!',
                 life: 2500,
               });
-              this.router.navigate(['']);
+              // this.router.navigate(['']);
             }
           },
           error: (err) => {
@@ -78,8 +79,11 @@ export class PersonalFormComponent implements OnInit, OnDestroy {
             });
           },
         });
-      this.AddPersonalForm.reset();
-      this.router.navigate(['']);
+      setTimeout(() => {
+        this.router.navigate(['']);
+      }, 3000);
+
+      // this.router.navigate(['']);
     }
   }
 

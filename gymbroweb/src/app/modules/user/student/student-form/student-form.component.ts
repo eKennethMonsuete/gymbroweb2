@@ -83,6 +83,9 @@ export class StudentFormComponent implements OnInit, OnDestroy {
             });
           },
         });
+      setTimeout(() => {
+        this.router.navigate(['dashboard']);
+      }, 3000);
       // this.AddStudentForm.reset();
       // this.router.navigate(['dashboard']);
     }

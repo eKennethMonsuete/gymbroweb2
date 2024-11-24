@@ -66,8 +66,11 @@ export class WorkoutFormComponent implements OnInit, OnDestroy {
             });
           },
         });
-      this.AddWorkoutForm.reset();
-      this.router.navigate(['dashboard']);
+      setTimeout(() => {
+        this.router.navigate(['dashboard']);
+      }, 2600);
+      // this.AddWorkoutForm.reset();
+      // this.router.navigate(['dashboard']);
     }
   }
 

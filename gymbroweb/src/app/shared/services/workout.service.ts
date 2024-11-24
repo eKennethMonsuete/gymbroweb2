@@ -21,7 +21,11 @@ export class WorkoutService {
   constructor(private http: HttpClient) {}
 
   createWorkout(request: WorkoutInput): Observable<WorkoutResponse> {
-    return this.http.post<WorkoutResponse>(`${this.API_URL}/workout`, request);
+    return this.http.post<WorkoutResponse>(
+      `${this.API_URL}/workout`,
+      request,
+      this.httpOptions
+    );
   }
 
   updateWorkout(
