@@ -22,7 +22,7 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    const JWT_TOKEN = sessionStorage.getItem('user-info');
+    const JWT_TOKEN = localStorage.getItem('user-info');
     return JWT_TOKEN ? true : false;
   }
 

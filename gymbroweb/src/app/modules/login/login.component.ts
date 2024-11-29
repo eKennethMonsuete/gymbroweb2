@@ -51,7 +51,7 @@ export class LoginComponent {
                 localStorage.setItem('personalName', tokenData.name);
               }
             }
-            this.loginForm.reset();
+            // this.loginForm.reset();
             this.router.navigate(['/dashboard']);
             this.showErrorMessage = false;
           }

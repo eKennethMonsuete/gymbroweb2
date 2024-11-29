@@ -15,7 +15,7 @@ const routes: Routes = [
       import('./modules/dashboard/dashboard.module').then(
         (m) => m.DashboardModule
       ),
-    // canActivate: [AuthGuardService],
+    canActivate: [AuthGuardService],
   },
   {
     path: 'measures',
@@ -23,7 +23,7 @@ const routes: Routes = [
       import('./modules/measures/measures.module').then(
         (m) => m.MeasuresModule
       ),
-    // canActivate: [AuthGuardService],
+    canActivate: [AuthGuardService],
   },
 
   {
@@ -39,11 +39,13 @@ const routes: Routes = [
       import('./modules/user/student/student.module').then(
         (p) => p.StudentModule
       ),
+    canActivate: [AuthGuardService],
   },
   {
     path: 'workout',
     loadChildren: () =>
       import('./modules/workout/workout.module').then((p) => p.WorkoutModule),
+    canActivate: [AuthGuardService],
   },
 ];
 
